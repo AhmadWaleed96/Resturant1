@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KitchenController;
 use App\Http\Controllers\WaiterController;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,8 @@ Route::prefix('cms/admin/')->group(function(){
     Route::resource('kitchens' , KitchenController::class);
     Route::resource('waiters' , WaiterController::class);
     Route::post('update_waiters/{id}' , [WaiterController::class , 'update'])->name('update_waiters');
+    Route::resource('admins' , AdminController::class);
+    Route::post('update_admins/{id}' , [AdminController::class , 'update'])->name('update_admins');
     
  });
  Route::prefix('pages/admin/')->group(function(){

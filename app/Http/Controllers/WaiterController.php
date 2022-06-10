@@ -38,8 +38,10 @@ class WaiterController extends Controller
     public function store(Request $request)
     {
         $validator = Validator($request->all(),[
-        'room_number'=>'required|string|min:3|max:20',
-        'times'=>'required|string'
+        'table_number'=>'required|string',
+        'meal_name'=>'required|string',
+        'quantity'=>'required|string',
+        'price'=>'required|string',
     ]);
 
         if(!$validator->fails()){

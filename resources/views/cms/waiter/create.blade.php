@@ -80,6 +80,7 @@
     formData.append('meal_name' , document.getElementById('meal_name').value);
     formData.append('quantity' , document.getElementById('quantity').value);
     formData.append('price' , document.getElementById('price').value);
+    formData.append('kitchen_id' , document.getElementById('kitchen_id').value);
       store('/cms/admin/waiters' , formData);
     }
   </script>

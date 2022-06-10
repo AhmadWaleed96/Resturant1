@@ -216,6 +216,35 @@
 
                   </ul>
                 </li> --}}
+                <li class="nav-item has-treeview">
+                  <a href="#" class="nav-link">
+                      <i class="fas fa-users ml-2"></i>
+                    <p>
+                       المشرف
+                      <i class="fas fa-angle-left right"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    {{-- @can('Index-Admin') --}}
+                    <li class="nav-item">
+                      <a href="{{ route('admins.index') }}" class="nav-link">
+                          <i class="fas fa-desktop ml-2"></i>
+                        <p>  عرض المشرفين</p>
+                      </a>
+                    </li>
+                    {{-- @endcan --}}
+                    {{-- @can('Create-Admin') --}}
+      
+      
+                    <li class="nav-item">
+                      <a href="{{route('admins.create') }}" class="nav-link">
+                          <i class="fas fa-plus ml-2"></i>
+                        <p>إضافة مشرف جديد</p>
+                      </a>
+                    </li>
+                    {{-- @endcan --}}
+                  </ul>
+                </li>
 
                 <li class="nav-item">
                   <a href="#" class="nav-link">

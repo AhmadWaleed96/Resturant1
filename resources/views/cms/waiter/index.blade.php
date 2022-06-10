@@ -38,17 +38,17 @@
             <th>seeting</th>
           </thead>
           <tbody>
-            {{-- @foreach ( $waiters as $waiter ) --}}
+            @foreach ( $waiters as $waiter )
             <tr class="table-success">
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td>{{$waiter->id}}</td>
+              <td>{{$waiter->table_number}}</td>
+              <td>{{$waiter->meal_name}}</td>
+              <td>{{$waiter->quantity}}</td>
+              <td>{{$waiter->price}}</td>
 
               <td class="d-flex justify-content-center">
 
-                <a href="" type="button"  class="btn btn-primary">Edit</a>
+                <a href="{{route('waiters.edit',$waiter->id)}}" type="button"  class="btn btn-primary">Edit</a>
                                  
                <a href="#" onclick="" class="btn btn-danger">Delete</a>
                                
@@ -56,6 +56,7 @@
        
                              </td>
             </tr>
+            @endforeach
           </tbody>
         </table>
       </div>
