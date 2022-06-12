@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BookTableController;
 use App\Http\Controllers\KitchenController;
+use App\Http\Controllers\RecepionController;
 use App\Http\Controllers\WaiterController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +32,10 @@ Route::prefix('cms/admin/')->group(function(){
     Route::post('update_waiters/{id}' , [WaiterController::class , 'update'])->name('update_waiters');
     Route::resource('admins' , AdminController::class);
     Route::post('update_admins/{id}' , [AdminController::class , 'update'])->name('update_admins');
+    Route::resource('recepions' , RecepionController::class);
+    Route::post('update_recepions/{id}' , [RecepionController::class , 'update'])->name('update_recepions');
+    Route::resource('booktables' , BookTableController::class);
+    Route::post('update_booktables/{id}' , [BookTableController::class , 'update'])->name('update_booktables');
     
  });
  Route::prefix('pages/admin/')->group(function(){

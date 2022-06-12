@@ -50,7 +50,7 @@
 
                 <a href="{{route('waiters.edit',$waiter->id)}}" type="button"  class="btn btn-primary">Edit</a>
                                  
-               <a href="#" onclick="" class="btn btn-danger">Delete</a>
+               <a href="#" onclick="performDestroy({{$waiter->id}}, this)" class="btn btn-danger">Delete</a>
                                
                 <button type="button" class="btn btn-success">Show</button>
        

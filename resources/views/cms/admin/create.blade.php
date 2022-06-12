@@ -173,8 +173,8 @@
 
 let formData = new FormData();
     // formData.append('role_id',document.getElementById('role_id').value);
-    formData.append('first_name',document.getElementById('first_name').value);
-    formData.append('last_name',document.getElementById('last_name').value);
+    // formData.append('first_name',document.getElementById('first_name').value);
+    // formData.append('last_name',document.getElementById('last_name').value);
     formData.append('number',document.getElementById('number').value);
     formData.append('age',document.getElementById('age').value);
     formData.append('email',document.getElementById('email').value);

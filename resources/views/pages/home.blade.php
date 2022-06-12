@@ -449,11 +449,11 @@
                         <div class="validate"></div>
                     </div>
                     <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                        <input type="text" class="form-control" name="mobile" id="mobile" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
                         <div class="validate"></div>
                     </div>
                     <div class="col-lg-4 col-md-6 form-group mt-3">
-                        <input type="text" name="date" class="form-control" id="date" placeholder="Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                        <input type="date" name="date" class="form-control" id="date" placeholder="Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
                         <div class="validate"></div>
                     </div>
                     <div class="col-lg-4 col-md-6 form-group mt-3">
@@ -461,12 +461,12 @@
                         <div class="validate"></div>
                     </div>
                     <div class="col-lg-4 col-md-6 form-group mt-3">
-                        <input type="number" class="form-control" name="people" id="people" placeholder="# of people" data-rule="minlen:1" data-msg="Please enter at least 1 chars">
+                        <input type="number" class="form-control" name="number_of_people" id="number_of_people" placeholder="number_of_people" data-rule="minlen:1" data-msg="Please enter at least 1 chars">
                         <div class="validate"></div>
                     </div>
                 </div>
                 <div class="form-group mt-3">
-                    <textarea class="form-control" name="message" rows="5" placeholder="Message"></textarea>
+                    <textarea class="form-control" name="nots" id="nots" rows="5" placeholder="Message"></textarea>
                     <div class="validate"></div>
                 </div>
                 <div class="mb-3">
@@ -474,7 +474,7 @@
                     <div class="error-message"></div>
                     <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
                 </div>
-                <div class="text-center"><button type="submit">Book a Table</button></div>
+                <div class="text-center"><button type="bu" onclick="performStore()">Book a Table</button></div>
             </form>
 
         </div>
@@ -817,7 +817,21 @@
 
 
 @section('scripts')
-
+{{-- <script>
+    function performStore(){
+      let formData = new FormData();
+      formData.append('name' , document.getElementById('name').value);
+    formData.append('email' , document.getElementById('email').value);
+    formData.append('mobile' , document.getElementById('mobile').value);
+    formData.append('date' , document.getElementById('date').value);
+    formData.append('time' , document.getElementById('time').value);
+    formData.append('number_of_people' , document.getElementById('number_of_people').value);
+    formData.append('nots' , document.getElementById('nots').value);
+    
+      store('/pages/admin/homes' , formData);
+    }
+    
+  </script> --}}
 
 @endsection
   

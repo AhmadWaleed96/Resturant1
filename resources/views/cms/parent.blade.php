@@ -248,6 +248,63 @@
 
                 <li class="nav-item">
                   <a href="#" class="nav-link">
+                    <i class="fas fa-broadcast-tower"></i>
+                    <p>
+                      الاستقبال
+                      <i class="fas fa-angle-left right"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="" class="nav-link">
+                        <i class="fas fa-list nav-icon"></i>
+                          <p>صفحة العرض</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="" class="nav-link">
+                        <i class="fas fa-plus-circle nav-icon"></i>
+                       <p>الاضافة</p>
+                      </a>
+                    </li>
+
+                  </ul>
+                </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="fas fa-broadcast-tower"></i>
+                    <p>
+                      حجز طاولة
+                      <i class="fas fa-angle-left right"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="{{ route('booktables.index') }}" class="nav-link">
+                        <i class="fas fa-list nav-icon"></i>
+                          <p>عرض صفحات الحجزات</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{ route('booktables.create') }}" class="nav-link">
+                        <i class="fas fa-list nav-icon"></i>
+                          <p> اضافة حجز جديد</p>
+                      </a>
+                    </li>
+                    {{-- <li class="nav-item">
+                      <a href="{{ route('booktables.create') }}" class="nav-link">
+                        <a href="" class="nav-link">
+                        <i class="fas fa-plus-circle nav-icon"></i>
+                       <p>الاضافة</p>
+                      </a>
+                    </li> --}}
+
+                  </ul>
+                </li>
+                
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
                     <i class="fas fa-utensils"></i>
                     <p>
                     kitchen
