@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BookTableController;
 use App\Http\Controllers\KitchenController;
 use App\Http\Controllers\RecepionController;
+use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\WaiterController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('cms.Auth.login');
 });
 
 
@@ -37,7 +38,15 @@ Route::prefix('cms/admin/')->group(function(){
     Route::resource('booktables' , BookTableController::class);
     Route::post('update_booktables/{id}' , [BookTableController::class , 'update'])->name('update_booktable');
 
- });
+});
+Route::prefix('cms/')->group(function(){
+    route::get('{guard}/showLogin' , [UserAuthController::class , 'showLogin'])->name('view.login');
+    route::post('{guard}/login' , [UserAuthController::class , 'Login']);
+});
+// Route::prefix('cms/admin')->middleware('auth:admin')->group(function(){
+//     Route::get('/logout' , [UserAuthController::class , 'Logout'])->name('cms.admin.logout');
+// });
+
  Route::prefix('pages/admin/')->group(function(){
     Route::view('master', 'pages.master');
     Route::view('book-order', 'pages.book-order');
@@ -47,4 +56,4 @@ Route::prefix('cms/admin/')->group(function(){
     Route::view('one-page', 'pages.one-page');
     Route::view('waiter', 'pages.waiter');
     Route::view('sessions', 'pages.sessions');
- });
+});

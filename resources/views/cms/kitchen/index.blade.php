@@ -22,7 +22,7 @@
               <h3 class="card-title"> عرض الطلبات </h3>
                <br>
               </div>
-  
+
             <!-- /.card-header -->
             <div class="card-body table-responsive p-0">
               <table class="table table-hover table-bordered table-striped text-nowrap text-center">
@@ -45,10 +45,10 @@
               {{-- { $cities->links()} --}}
               {{-- {{ $rooms->links() }} --}}
           </span>
-  
+
             </div>
             <!-- /.card-body -->
-  
+
           </div>
           <!-- /.card -->
         </div>
