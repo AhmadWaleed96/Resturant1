@@ -40,63 +40,24 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator($request->all(),[
-            // 'image'=>"image|max:2048|mimes:png,jpg,jpeg,pdf",
+        $validator = Validator($request->all()
 
-        ]);
-
+    );
         if(! $validator->fails()){
             $admins = new Admin();
             $admins->email = $request->get('email');
-            $admins->password = Hash::make($request->get('password'));
+            $isSaved = $admins->save();
 
-            if (request()->hasFile('image')) {
-
-            $image = $request->file('image');
-
-            $imageName = time() . 'image.' . $image->getClientOriginalExtension();
-
-            $image->move('storage/images/admin', $imageName);
-
-            $admins->image = $imageName;
+            if($isSaved){
+                return response()->json(['icon' => 'success' , 'title' => 'تم إضافة الحجز بنجاح'] , 200);
 
             }
-
-            if (request()->hasFile('cv')) {
-
-            $cv = $request->file('cv');
-
-            $fileName = time() . 'cv.' . $cv->getClientOriginalExtension();
-
-            $cv->move('storage/files/admin', $fileName);
-
-            $admins->cv = $fileName;
+            else{
+                return response()->json(['icon' => 'error' , 'title' => 'فشلت إضافة الحجز'] , 400);
             }
 
-        $isSaved = $admins->save();
-        if($isSaved){
-
-            $users = new User();
-            // $roles = Roll::findOrFail($request->get('role_id'));
-            // $admins->assignRole($roles->name);
-            $users->first_name = $request->get('first_name');
-            $users->last_name = $request->get('last_name');
-            $users->number = $request->get('number');
-            $users->age = $request->get('age');
-            $users->email = $request->get('email');
-            $users->password = $request->get('password');
-            $users->city = $request->get('city');
-            $users->gender = $request->get('gender');
-            $users->actor()->associate($admins);
-            $isSaved = $users->save();
-
-            return response()->json(['icon' => 'success' , 'title' => 'تم إضافة المشرف بنجاح'] , 200);
-
         }
-        else{
-            return response()->json(['icon' => 'error' , 'title' => 'فشلت إضافة المشرف'] , 400);
-        }
-    }
+
         else{
             return response()->json(['icon' => 'error' , 'title' => $validator->getMessageBag()->first()] , 400);
         }

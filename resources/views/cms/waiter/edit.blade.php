@@ -47,7 +47,7 @@
                     <input type="number" class="form-control" name="price" value="" id="price" placeholder=" Enter Price">
                   </div>
                   <div>
-                 
+
                 </div>
 
                   </div>
@@ -59,10 +59,6 @@
               </div>
             </form>
           </div>
-
-
-
-
         </div>
 
       </div>

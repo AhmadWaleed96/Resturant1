@@ -20,8 +20,8 @@
                 <div class="container" data-aos="fade-up">
 
                     <div class="section-title">
-                        <h2>Pirate</h2>
-                        <p>Check Our Tasty Menu Pirate</p>
+                        <h2>waiter</h2>
+                        <p>Check Our Tasty Menu waiter</p>
                     </div>
 
                     <div class="row" data-aos="fade-up" data-aos-delay="100">
@@ -221,6 +221,5 @@
 
 
 @endsection
-  
 
-    
+

@@ -15,7 +15,7 @@ class CreateWaitersTable extends Migration
     {
         Schema::create('waiters', function (Blueprint $table) {
             $table->id();
-            $table->integer('table_number');
+            $table->integer('table_number') ;
             $table->string('meal_name');
             $table->integer('quantity');
             $table->integer('price');

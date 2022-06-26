@@ -16,7 +16,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            
+
 
           <!-- /.card-header -->
           <div class="card-body table-responsive p-0">
@@ -29,7 +29,6 @@
                   <th>التاريخ</th>
                   <th>الوقت</th>
                   <th>عدد الاشخاص</th>
-                  <th>ملاحظات</th>
                   <th> الاعدادات </th>
                     {{-- <td>
                   <td>{{$admin->user ? $admin->user->first_name . ' '.  $admin->user->last_name : "Null"}}</td>
@@ -44,27 +43,23 @@
                   <td>{{$booktable->mobile}}</td>
                   <td>{{$booktable->date}}</td>
                   <td>{{$booktable->time}}</td>
-                  <td>{{$booktable->number_of_people}}</td> 
-                  <td>{{$booktable->nots}}</td>                  
-                  <td>
-                    {{-- <img class="img-circle img-bordered-sm" src="{{asset('/images/admin/'.$admin->image)}}" width="60" height="60" alt="User Image"> --}}
-                  </td>
-                  
-
+                  <td>{{$booktable->number_of_people}}</td>
                   <td>
                     <div class="btn">
-                      <a href="" class="btn btn-info" title="Edit">
-                        تعديل
+                        <a href="{{route('booktables.edit',$booktable->id)}}"  class="btn btn-info" title="Edit">
+                          تعديل
+                          </a>
+
+                        <a href="#" onclick="performDestroy({{$booktable->id}}, this)" class="btn btn-danger" title="Delete">
+                          حذف
                         </a>
 
-                      <a href="#" onclick="performDestroy({{$booktable->id}}, this)" class="btn btn-danger" title="Delete">
-                        حذف
-                      </a>
+                        <a href="{{route('booktables.show',$booktable->id)}}" class="btn btn-success" title="Show">
+                          معلومات
+                        </a>
+                      </div>
+                    {{-- <img class="img-circle img-bordered-sm" src="{{asset('/images/admin/'.$admin->image)}}" width="60" height="60" alt="User Image"> --}}
 
-                      <a href="{{route('booktables.show',$booktable->id)}}" class="btn btn-success" title="Show">
-                        معلومات
-                      </a>
-                    </div>
                   </td>
                 </tr>
                 @endforeach

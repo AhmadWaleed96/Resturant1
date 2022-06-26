@@ -46,8 +46,8 @@ class BookTableController extends Controller
             $booktables->email = $request->get('email');
             $booktables->mobile = $request->get('mobile');
             $booktables->date = $request->get('date');
-            // $booktables->time = $request->get('time');
-            // $booktables->number_of_people = $request->get('number_of_people');
+            $booktables->time = $request->get('time');
+            $booktables->number_of_people = $request->get('number_of_people');
             // $booktables->nots = $request->get('nots');
             // $booktables->recepion_id = $request->get('recepion_id');
 
@@ -76,7 +76,8 @@ class BookTableController extends Controller
      */
     public function show($id)
     {
-        //
+        $booktables = BookTable::findOrFail($id);
+        return response()->view('cms.book a Table.show' , compact('booktables'));
     }
 
     /**
@@ -87,7 +88,8 @@ class BookTableController extends Controller
      */
     public function edit($id)
     {
-        //
+        $booktables = BookTable::findOrFail($id);
+        return response()->view('cms.book a Table.edit' , compact('booktables'));
     }
 
     /**
@@ -99,7 +101,35 @@ class BookTableController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator($request->all(), [
+            // 'name' => 'required|string|min:3|max:20',
+            // 'email' => 'required|string|min:7|max:30',
+        ]);
+
+        if(!$validator->fails()){
+
+        $booktables = BookTable::findOrFail($id);
+        $booktables->name = $request->get('name');
+        $booktables->email = $request->get('email');
+        $booktables->mobile = $request->get('mobile');
+        $booktables->date = $request->get('date');
+        $booktables->time = $request->get('time');
+
+        $isUpdate = $booktables->save();
+        return ['redirect' =>route('booktables.index')];
+
+        if($isUpdate){
+            return response()->json(['icon' => 'success' , 'title' => 'تم تعديل الحجز بنجاح'] , 200);
+         }
+         else {
+            return response()->json(['icon' => 'error' , 'title' => ' فشلت عملية تعديل الحجز'] , 400);
+
+         }
+
+    }
+    else{
+        return response()->json(['icon' => 'error' , 'title' => $validator->getMessageBag()->first()] , 400);
+    }
     }
 
     /**
@@ -111,6 +141,6 @@ class BookTableController extends Controller
     public function destroy($id)
     {
          $booktables = BookTable::destroy($id);
-        return response()->json(['icon' => 'success' , 'title' => 'تم حذف الدبلومة بنجاح'] ,  $booktables ? 200 : 400);
+        return response()->json(['icon' => 'success' , 'title' => 'تم حذف الحجز بنجاح'] ,  $booktables ? 200 : 400);
     }
 }

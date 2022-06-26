@@ -43,7 +43,7 @@
                             <div class="row">
 
 
-                                <div class="form-group col-md-4">
+                                {{--  <div class="form-group col-md-4">
                                     <label for="first-name">first name</label>
                                     <input type="text" name="first-name" class="form-control" id="first-name"
                                         placeholder="أدخل اسم الأول">
@@ -53,7 +53,7 @@
                                     <label for="last-name">last name</label>
                                     <input type="text" name="last-name" class="form-control" id="last-name"
                                         placeholder="أدخل الاسم الأخير">
-                                </div>
+                                </div>  --}}
 
 
                                 <div class="form-group col-md-4">
@@ -72,7 +72,7 @@
                             {{-- </div> --}}
 
 
-                                <div class="form-group col-md-4">
+                                {{--  <div class="form-group col-md-4">
                                     <label for="number">mobile</label>
                                     <input type="text" name="number" class="form-control"
                                         id="number" placeholder="ادخل رقم الجوال  ">
@@ -82,21 +82,21 @@
                                     <label for="age">age</label>
                                     <input type="number" name="age" class="form-control" id="age"
                                         placeholder="ادخل العمر ">
-                                </div>
-
-                                
+                                </div>  --}}
 
 
-                                <div class="form-group col-md-4">
+
+
+                               {{-- <div class="form-group col-md-4">
                                     <label for="city">اسم المدينة</label>
-                                    {{-- <select class="form-select form-select-sm" name="city" style="width: 100%;"
+                                     <select class="form-select form-select-sm" name="city" style="width: 100%;"
                                         id="city" aria-label=".form-select-sm example"> --}}
-                                        <input type="text" name="city" class="form-control" id="city"
-                                        placeholder="ادخل المدينة ">
+                                        {{--  <input type="text" name="city" class="form-control" id="city"  --}}
+                                        {{--  placeholder="ادخل المدينة ">  --}}
                                         {{-- @foreach ($cities as $city)
                                         <option value="{{ $city->id }}">{{ $city->name }}</option>
 
-                                        @endforeach --}}
+                                        @endforeach
                                     </select>
                                 </div>
 
@@ -106,15 +106,15 @@
                                         id="gender" aria-label=".form-select-sm example">
                                         <option value="male">ذكر</option>
                                         <option value="female">انثى</option>
-                                       
+
 
                                     </select>
-                                </div>
+                                </div>--}}
 
-                        
+
                             </div>
-                           
-                            <div class="row">
+
+                            {{--  <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="image">image</label>
                                       <input type="file" name="image" class="form-control" id="image"
@@ -125,7 +125,7 @@
                                     <label for="cv">اضافة السيرة الذاتية</label>
                                       <input type="file" name="cv" class="form-control" id="cv"
                                         placeholder="أرفق السيرة الذاتية">
-                                </div>
+                                </div>  --}}
 
 
                             </div>
@@ -172,15 +172,15 @@
        function performStore() {
 
 let formData = new FormData();
+formData.append('email',document.getElementById('email').value);
+formData.append('password',document.getElementById('password').value);
     // formData.append('role_id',document.getElementById('role_id').value);
     // formData.append('first_name',document.getElementById('first_name').value);
     // formData.append('last_name',document.getElementById('last_name').value);
-    formData.append('number',document.getElementById('number').value);
-    formData.append('age',document.getElementById('age').value);
-    formData.append('email',document.getElementById('email').value);
-    formData.append('password',document.getElementById('password').value);
-    formData.append('city',document.getElementById('city').value);
-    formData.append('gender',document.getElementById('gender').value);
+    //formData.append('number',document.getElementById('number').value);
+    //formData.append('age',document.getElementById('age').value);
+    //formData.append('city',document.getElementById('city').value);
+    //formData.append('gender',document.getElementById('gender').value);
     // formData.append('image',document.getElementById('image').files[0]);
     // formData.append('cv',document.getElementById('cv').files[0]);
 

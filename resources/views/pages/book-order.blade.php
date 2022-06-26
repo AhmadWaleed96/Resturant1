@@ -18,7 +18,7 @@
         <div class="container">
 
             <div class="d-flex justify-content-between align-items-center">
-                <h2>Menu</h2>
+                <h2>Book Order</h2>
                 <ol>
                     <li><a href="index.html">Home</a></li>
                     <li>Menu</li>
@@ -159,5 +159,4 @@
 
 @endsection
 
-  
-  
+

@@ -35,8 +35,8 @@ Route::prefix('cms/admin/')->group(function(){
     Route::resource('recepions' , RecepionController::class);
     Route::post('update_recepions/{id}' , [RecepionController::class , 'update'])->name('update_recepions');
     Route::resource('booktables' , BookTableController::class);
-    Route::post('update_booktables/{id}' , [BookTableController::class , 'update'])->name('update_booktables');
-    
+    Route::post('update_booktables/{id}' , [BookTableController::class , 'update'])->name('update_booktable');
+
  });
  Route::prefix('pages/admin/')->group(function(){
     Route::view('master', 'pages.master');
@@ -45,6 +45,6 @@ Route::prefix('cms/admin/')->group(function(){
     Route::view('home', 'pages.home');
     Route::view('login', 'pages.login');
     Route::view('one-page', 'pages.one-page');
-    Route::view('pirate', 'pages.pirate');
+    Route::view('waiter', 'pages.waiter');
     Route::view('sessions', 'pages.sessions');
  });
