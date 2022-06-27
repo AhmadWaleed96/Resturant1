@@ -44,6 +44,10 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
+        'qarson' => [
+            'driver' => 'session',
+            'provider' => 'qarsons',
+        ],
     ],
 
     /*
@@ -71,6 +75,10 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
+        ],
+        'qarsons' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Qarson::class,
         ],
         
 
