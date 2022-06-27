@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">  
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CMS|@yield('title')</title>
   <link href="{{asset("cms/dist/img/Untitled-2.png")}}" rel="icon">
@@ -216,6 +216,60 @@
 
                   </ul>
                 </li>
+                <li class="nav-header">المستخدمين</li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="fas fa-users"></i>
+                    <p>
+                      المشرف
+                      <i class="fas fa-angle-left right"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="{{ route("admins.create") }}" class="nav-link">
+                        <i class="fas fa-plus-circle nav-icon"></i>
+                          <p>أضافة</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{ route('admins.index') }}" class="nav-link">
+                        <i class="fas fa-list nav-icon"></i>
+                        <p>عرض</p>
+                      </a>
+                    </li>
+
+                  </ul>
+                </li>
+
+                <li class="nav-header">ادارة محتوى النظام </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="fas fa-city"></i>
+                    <p>
+                      المدن
+                      <i class="fas fa-angle-left right"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="{{ route("cities.create") }}" class="nav-link">
+                        <i class="fas fa-plus-circle nav-icon"></i>
+                          <p>اضافة</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{ route("cities.index") }}u}}" class="nav-link">
+                        <i class="fas fa-list nav-icon"></i>
+                        <p>عرض</p>
+                      </a>
+                    </li>
+
+                  </ul>
+                </li>
+                <li class="nav-header">setting</li>
 
                 <li class="nav-item">
                   <a href="#" class="nav-link">
@@ -241,7 +295,8 @@
 
                   </ul>
                 </li>
-              
+
+
 
 
                 <li class="nav-header">setting</li>
@@ -252,13 +307,13 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('cms.auth.profile-edit') }}" class="nav-link">
                       <i class="fas fa-edit nav-icon"></i>
                       <p>Edit Profile</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route("cms.admin.logout") }}" class="nav-link">
                       <i class="fas fa-sign-in-alt nav-icon"></i>
                        <p>Logout</p>
                     </a>
@@ -287,16 +342,17 @@
                     <li class="breadcrumb-item active">@yield('sub-title')</li>
                   </ol>
                 </div><!-- /.col -->
-              </div><!-- /.row -->
+            </div><!-- /.row -->
+            @yield('content')
             </div><!-- /.container-fluid -->
           </div>
+          
           <!-- /.content-header -->
 
-          @yield('content')
 
         </div>
         <!-- /.content-wrapper -->
-        <footer class="main-footer">
+        <footer class="main-footer mt-3">
           <strong>Copyright &copy; {{now()->year}}-{{now()->year+1}} <a href="https://adminlte.io">{{env('APP_NAME')}}</a>.</strong>
           All rights reserved.
           <div class="float-right d-none d-sm-inline-block">

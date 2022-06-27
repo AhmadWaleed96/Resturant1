@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BookTableController;
+use App\Http\Controllers\CityController;
 use App\Http\Controllers\KitchenController;
 use App\Http\Controllers\RecepionController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\WaiterController;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,8 +27,8 @@ Route::get('/', function () {
 
 
 
-Route::prefix('cms/admin/')->group(function(){
-    Route::view('parent', 'cms.parent');
+Route::prefix('cms/admin/')->middleware('auth:admin')->group(function(){
+    Route::view('', 'cms.parent');
     Route::view('test' , 'cms.test');
     Route::resource('kitchens' , KitchenController::class);
     Route::resource('waiters' , WaiterController::class);
@@ -37,15 +39,19 @@ Route::prefix('cms/admin/')->group(function(){
     Route::post('update_recepions/{id}' , [RecepionController::class , 'update'])->name('update_recepions');
     Route::resource('booktables' , BookTableController::class);
     Route::post('update_booktables/{id}' , [BookTableController::class , 'update'])->name('update_booktable');
-
+    
+    Route::resource('cities' , CityController::class);
+    Route::post('update_cities/{id}' , [CityController::class , 'update'])->name('update_cities');
 });
-Route::prefix('cms/')->group(function(){
+Route::prefix('cms/')->middleware('guest:admin')->group(function(){
     route::get('{guard}/showLogin' , [UserAuthController::class , 'showLogin'])->name('view.login');
     route::post('{guard}/login' , [UserAuthController::class , 'Login']);
 });
-// Route::prefix('cms/admin')->middleware('auth:admin')->group(function(){
-//     Route::get('/logout' , [UserAuthController::class , 'Logout'])->name('cms.admin.logout');
-// });
+Route::prefix('cms/admin')->middleware('auth:admin')->group(function(){
+    Route::get('profile/edit' , [UserAuthController::class , 'editProfile'])->name('cms.auth.profile-edit');
+    Route::post('profile/update' , [UserAuthController::class , 'updateProfile'])->name('cms.auth.update-profile');
+    Route::get('/logout' , [UserAuthController::class , 'Logout'])->name('cms.admin.logout');
+});
 
  Route::prefix('pages/admin/')->group(function(){
     Route::view('master', 'pages.master');
