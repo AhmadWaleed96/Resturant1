@@ -55,21 +55,6 @@
 
 
 @section('scripts')
-{{-- <script>
-    function performStore(){
-      let formData = new FormData();
-      formData.append('name' , document.getElementById('name').value);
-    formData.append('email' , document.getElementById('email').value);
-    formData.append('mobile' , document.getElementById('mobile').value);
-    formData.append('date' , document.getElementById('date').value);
-    formData.append('time' , document.getElementById('time').value);
-    formData.append('number_of_people' , document.getElementById('number_of_people').value);
-    formData.append('nots' , document.getElementById('nots').value);
-
-      store('/pages/admin/homes' , formData);
-    }
-
-  </script> --}}
 
 @endsection
 

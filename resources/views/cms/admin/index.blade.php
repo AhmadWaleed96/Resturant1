@@ -25,7 +25,7 @@
                               <i class="flaticon2-search-1 text-muted"></i>
                           </span>
                         </div>
-  
+
                         <div class="input-icon col-md-2">
                         <input type="text" class="form-control" placeholder=" General Search"
                            name='short_description' @if( request()->search) value={{request()->search}} @endif/>
@@ -33,7 +33,7 @@
                               <i class="flaticon2-search-1 text-muted"></i>
                           </span>
                         </div>
-  
+
                         <div class="input-icon col-md-2">
                         <input type="date" class="form-control" placeholder="Search By Date"
                            name='created_at' @if( request()->created_at) value={{request()->created_at}} @endif/>
@@ -41,18 +41,18 @@
                               <i class="flaticon2-search-1 text-muted"></i>
                           </span>
                         </div>
-    
+
                 <div class="col-md-4">
                       <button class="btn btn-success btn-md" type="submit">فلتر البحث</button>
                       <a href="{{route('admins.index')}}"  class="btn btn-danger">إنهاء البحث</a>
                       <a href="{{route('admins.create')}}"><button type="button" class="btn btn-md btn-primary">إنشاء أدمن</button></a>
                 </div>
-    
-    
-    
+
+
+
               </div>
                 </form> --}}
-    
+
 
           <!-- /.card-header -->
           <div class="card-body table-responsive p-0">
@@ -88,7 +88,7 @@
                   <td>
                     {{-- <img class="img-circle img-bordered-sm" src="{{asset('/images/admin/'.$admin->image)}}" width="60" height="60" alt="User Image"> --}}
                   </td>
-                  
+
 
                   <td>
                     <div class="btn">

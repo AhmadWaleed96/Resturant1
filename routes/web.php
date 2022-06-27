@@ -37,7 +37,7 @@ Route::prefix('cms/admin/')->group(function(){
     Route::resource('booktables' , BookTableController::class);
     Route::post('update_booktables/{id}' , [BookTableController::class , 'update'])->name('update_booktable');
 
- });
+});
  Route::prefix('pages/admin/')->group(function(){
     Route::view('master', 'pages.master');
     Route::view('book-order', 'pages.book-order');
