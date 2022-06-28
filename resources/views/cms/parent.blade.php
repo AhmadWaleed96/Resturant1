@@ -182,16 +182,7 @@
             </div>
 
             <!-- SidebarSearch Form -->
-            <div class="form-inline">
-              <div class="input-group" data-widget="sidebar-search">
-                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                  <button class="btn btn-sidebar">
-                    <i class="fas fa-search fa-fw"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
+
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
@@ -206,16 +197,59 @@
                       <i class="right fas fa-angle-left"></i>
                     </p>
                   </a>
+
+                </li>
+                <li class="nav-header">الادوار والصلاحيات </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="fas fa-user"></i>
+                    <p>
+                      الادوار
+                      <i class="fas fa-angle-left right"></i>
+                    </p>
+                  </a>
                   <ul class="nav nav-treeview">
                     <li class="nav-item">
-                      <a href="cms/parent.blade.php" class="nav-link active">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Dashboard</p>
+                      <a href="{{ route("roles.create") }}" class="nav-link">
+                        <i class="fas fa-plus-circle nav-icon"></i>
+                          <p>أضافة</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{ route('roles.index') }}" class="nav-link">
+                        <i class="fas fa-list nav-icon"></i>
+                        <p>عرض</p>
                       </a>
                     </li>
 
                   </ul>
                 </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="fas fa-user"></i>
+                    <p>
+                      الصلاحيات
+                      <i class="fas fa-angle-left right"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="{{ route("permissions.create") }}" class="nav-link">
+                        <i class="fas fa-plus-circle nav-icon"></i>
+                          <p>أضافة</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{ route('permissions.index') }}" class="nav-link">
+                        <i class="fas fa-list nav-icon"></i>
+                        <p>عرض</p>
+                      </a>
+                    </li>
+
+                  </ul>
+                </li>
+
                 <li class="nav-header">المستخدمين</li>
 
                 <li class="nav-item">
@@ -235,6 +269,30 @@
                     </li>
                     <li class="nav-item">
                       <a href="{{ route('admins.index') }}" class="nav-link">
+                        <i class="fas fa-list nav-icon"></i>
+                        <p>عرض</p>
+                      </a>
+                    </li>
+
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="fas fa-users"></i>
+                    <p>
+                      القرصون
+                      <i class="fas fa-angle-left right"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="{{ route("qarsons.create") }}" class="nav-link">
+                        <i class="fas fa-plus-circle nav-icon"></i>
+                          <p>أضافة</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{ route('qarsons.index') }}" class="nav-link">
                         <i class="fas fa-list nav-icon"></i>
                         <p>عرض</p>
                       </a>
@@ -346,7 +404,7 @@
             @yield('content')
             </div><!-- /.container-fluid -->
           </div>
-          
+
           <!-- /.content-header -->
 
 

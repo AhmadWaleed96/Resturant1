@@ -4,7 +4,11 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BookTableController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\KitchenController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\QarsonController;
 use App\Http\Controllers\RecepionController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\RolePermissionController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\WaiterController;
 use GuzzleHttp\Middleware;
@@ -26,8 +30,17 @@ Route::get('/', function () {
 });
 
 
+Route::prefix('cms/')->middleware('guest:admin,qarson')->group(function(){
+    route::get('{guard}/showLogin' , [UserAuthController::class , 'showLogin'])->name('view.login');
+    route::post('{guard}/login' , [UserAuthController::class , 'Login']);
+});
+Route::prefix('cms/admin')->middleware('auth:admin,qarson')->group(function(){
+    Route::get('profile/edit' , [UserAuthController::class , 'editProfile'])->name('cms.auth.profile-edit');
+    Route::post('profile/update' , [UserAuthController::class , 'updateProfile'])->name('cms.auth.update-profile');
+    Route::get('/logout' , [UserAuthController::class , 'Logout'])->name('cms.admin.logout');
+});
 
-Route::prefix('cms/admin/')->middleware('auth:admin')->group(function(){
+Route::prefix('cms/admin/')->middleware('auth:admin,qarson')->group(function(){
     Route::view('', 'cms.parent');
     Route::view('test' , 'cms.test');
     Route::resource('kitchens' , KitchenController::class);
@@ -42,15 +55,17 @@ Route::prefix('cms/admin/')->middleware('auth:admin')->group(function(){
 
     Route::resource('cities' , CityController::class);
     Route::post('update_cities/{id}' , [CityController::class , 'update'])->name('update_cities');
-});
-Route::prefix('cms/')->middleware('guest:admin')->group(function(){
-    route::get('{guard}/showLogin' , [UserAuthController::class , 'showLogin'])->name('view.login');
-    route::post('{guard}/login' , [UserAuthController::class , 'Login']);
-});
-Route::prefix('cms/admin')->middleware('auth:admin')->group(function(){
-    Route::get('profile/edit' , [UserAuthController::class , 'editProfile'])->name('cms.auth.profile-edit');
-    Route::post('profile/update' , [UserAuthController::class , 'updateProfile'])->name('cms.auth.update-profile');
-    Route::get('/logout' , [UserAuthController::class , 'Logout'])->name('cms.admin.logout');
+
+    Route::resource('qarsons' , QarsonController::class);
+    Route::post('update_qarsons/{id}' , [QarsonController::class , 'update'])->name('update_qarsons');
+
+    Route::resource('roles', RoleController::class);
+    Route::post('update_roles/{id}' , [RoleController::class , 'update'])->name('update_roles');
+    Route::resource('permissions', PermissionController::class);
+    Route::post('update_permissions/{id}' , [PermissionController::class , 'update'])->name('update_permissions');
+    Route::resource('role.permissions', RolePermissionController::class);
+
+
 });
 
  Route::prefix('pages/admin/')->group(function(){
