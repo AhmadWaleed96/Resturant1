@@ -17,10 +17,13 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('mobile');
+            $table->string('date_of_birth');
+            $table->enum('salary_type' , ['راتب ثابت' , 'راتب بالساعة']);
+            $table->string('salary_value')->nullable();
+            $table->foreignId('city_id');
+            $table->foreign('city_id')->on('cities')->references('id');
+            $table->morphs('actor');
             $table->timestamps();
         });
     }

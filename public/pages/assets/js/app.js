@@ -29,16 +29,15 @@ function addList(e) {
 
     let product = {};
     product.id = proName.innerHTML;
-    product.name = proName.innerHTML;
-    product.price = price.innerHTML;
-    product.count = countPro.value;
+    product.name = e.parentElement.parentElement.childNodes[3].childNodes[1].innerHTML;
+    product.price = e.parentElement.parentElement.childNodes[3].childNodes[2].childNodes[1].innerHTML;
+    product.count = e.previousElementSibling.value;
     product.total = +product.price * +product.count;
 
     console.log(JSON.stringify(product));
     products.push(product);
     localStorage.pros = JSON.stringify(products);
     show();
-
 
 }
 

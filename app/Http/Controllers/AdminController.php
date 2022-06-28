@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\City;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -28,8 +29,8 @@ class AdminController extends Controller
      */
     public function create()
     {
-        $admins = Admin::all();
-        return response()->view('cms.admin.create' , compact('admins'));
+        $cities=City::all();
+        return response()->view('cms.admin.create' , compact('cities'));
     }
 
     /**
@@ -40,27 +41,67 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator($request->all()
 
-    );
+        $validator = Validator($request->all(),[
+            // 'image'=>"image|max:2048|mimes:png,jpg,jpeg,pdf",
+
+        ]);
+
         if(! $validator->fails()){
             $admins = new Admin();
             $admins->email = $request->get('email');
-            $isSaved = $admins->save();
+            $admins->password = Hash::make($request->get('password'));
 
-            if($isSaved){
-                return response()->json(['icon' => 'success' , 'title' => 'تم إضافة الحجز بنجاح'] , 200);
+            if (request()->hasFile('image')) {
+
+            $image = $request->file('image');
+
+            $imageName = time() . 'image.' . $image->getClientOriginalExtension();
+
+            $image->move('storage/images/admin', $imageName);
+
+            $admins->image = $imageName;
 
             }
-            else{
-                return response()->json(['icon' => 'error' , 'title' => 'فشلت إضافة الحجز'] , 400);
+
+            if (request()->hasFile('cv')) {
+
+            $cv = $request->file('cv');
+
+            $fileName = time() . 'cv.' . $cv->getClientOriginalExtension();
+
+            $cv->move('storage/files/admin', $fileName);
+
+            $admins->cv = $fileName;
             }
+
+        $isSaved = $admins->save();
+        if($isSaved){
+
+            $users = new User();
+            // $roles = Role::findOrFail($request->get('role_id'));
+            // $admins->assignRole($roles->name);
+            $users->first_name = $request->get('first_name');
+            $users->last_name = $request->get('last_name');
+            $users->mobile = $request->get('mobile');
+            $users->date_of_birth = $request->get('date_of_birth');
+            $users->salary_type = $request->get('salary_type');
+            $users->salary_value = $request->get('salary_value');
+            $users->city_id = $request->get('city_id');
+            $users->actor()->associate($admins);
+            $isSaved = $users->save();
+
+            return response()->json(['icon' => 'success' , 'title' => 'تم إضافة المشرف بنجاح'] , 200);
 
         }
-
+        else{
+            return response()->json(['icon' => 'error' , 'title' => 'فشلت إضافة المشرف'] , 400);
+        }
+    }
         else{
             return response()->json(['icon' => 'error' , 'title' => $validator->getMessageBag()->first()] , 400);
         }
+
     }
 
     /**
