@@ -66,7 +66,7 @@
                                 <div class="form-group col-md-3">
                                     <label for="date_of_birth"> تاريخ الميلاد </label>
                                     <input type="date" name="date_of_birth" class="form-control" id="date_of_birth"
-                                    value="{{ $admins->user->date_of_birth }}" 
+                                    value="{{ $admins->user->date_of_birth }}"
                                      placeholder="ادخل تاريخ الميلاد   ">
                                 </div>
 
@@ -169,16 +169,16 @@ $('.city_id').select2({
     function update(){
 
         let formData = new FormData();
-            // formData.append('first_name',document.getElementById('first_name').value);
-            // formData.append('last_name',document.getElementById('last_name').value);
-            // formData.append('mobile',document.getElementById('mobile').value);
-            // formData.append('date_of_birth',document.getElementById('date_of_birth').value);
+            formData.append('first_name',document.getElementById('first_name').value);
+            formData.append('last_name',document.getElementById('last_name').value);
+            formData.append('mobile',document.getElementById('mobile').value);
+            formData.append('date_of_birth',document.getElementById('date_of_birth').value);
             formData.append('email',document.getElementById('email').value);
-            // formData.append('salary_type',document.getElementById('salary_type').value);
-            // formData.append('salary_value',document.getElementById('salary_value').value);
-            // formData.append('city_id',document.getElementById('city_id').value);
-            // formData.append('image',document.getElementById('image').files[0]);
-            // formData.append('cv',document.getElementById('cv').files[0]);
+            formData.append('salary_type',document.getElementById('salary_type').value);
+            formData.append('salary_value',document.getElementById('salary_value').value);
+            formData.append('city_id',document.getElementById('city_id').value);
+            formData.append('image',document.getElementById('image').files[0]);
+            formData.append('cv',document.getElementById('cv').files[0]);
             storeRoute('/cms/admin/profile/update' , formData );
     }
 

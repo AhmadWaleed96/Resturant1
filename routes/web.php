@@ -31,7 +31,11 @@ Route::get('/', function () {
 
 
 Route::prefix('cms/')->middleware('guest:admin,qarson')->group(function(){
+<<<<<<< HEAD
     route::get('{guard}/Login' , [UserAuthController::class , 'Login'])->name('view.login');
+=======
+    route::get('{guard}/login' , [UserAuthController::class , 'showLogin'])->name('view.login');
+>>>>>>> 38dcaa9dbdc8a60f342061e26c4d5044f29440bb
     route::post('{guard}/login' , [UserAuthController::class , 'Login']);
 });
 Route::prefix('cms/admin')->middleware('auth:admin,qarson')->group(function(){
