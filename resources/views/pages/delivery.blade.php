@@ -1,6 +1,6 @@
 @extends('pages/master')
 
-@section('title' , 'test title')
+@section('title' , ' Delivery')
 
 @section('styles')
 
@@ -43,7 +43,7 @@
                                 <img src="{{asset('pages/assets/img/menu/lobster-bisque.jpg')}}" alt="" class="img-fluid">
                             </a>
                             <div class="menu-content">
-                                <a href="#" id="proname">Lobster Bisque</a><span>$<span id="price">5.95</span></span>
+                                <a href="#" id="proname">Lobster Bisque</a><span>$<span id="price">6</span></span>
                             </div>
                             <div class="menu-ingredients">
                                 Lorem, deren, trataro, filede, nerada
@@ -60,7 +60,7 @@
                                 <img src="{{asset('pages/assets/img/menu/bread-barrel.jpg')}}" alt="" class="img-fluid">
                             </a>
                             <div class="menu-content">
-                                <a href="#" id="proname1">Bread Barrel</a><span>$<span class="price">6.95</span></span>
+                                <a href="#" id="proname1">Bread Barrel</a><span>$<span class="price">7</span></span>
                             </div>
                             <div class="menu-ingredients">
                                 Lorem, deren, trataro, filede, nerada
@@ -76,7 +76,7 @@
                                 <img src="{{asset('pages/assets/img/menu/cake.jpg')}}" alt="" class="img-fluid">
                             </a>
                             <div class="menu-content">
-                                <a href="#" id="proname2">Crab Cake</a><span>$<span class="price">7.95</span></span>
+                                <a href="#" id="proname2">Crab Cake</a><span>$<span class="price">8</span></span>
                             </div>
                             <div class="menu-ingredients">
                                 A delicate crab cake served on a toasted roll with lettuce and tartar sauce
@@ -92,7 +92,7 @@
                                 <img src="{{asset('pages/assets/img/menu/caesar.jpg')}}" alt="" class="img-fluid">
                             </a>
                             <div class="menu-content">
-                                <a href="#" id="proname3">Caesar Selections</a><span>$<span class="price">8.95</span></span>
+                                <a href="#" id="proname3">Caesar Selections</a><span>$<span class="price">9</span></span>
                             </div>
                             <div class="menu-ingredients">
                                 Lorem, deren, trataro, filede, nerada
@@ -108,7 +108,7 @@
                                 <img src="{{asset('pages/assets/img/menu/tuscan-grilled.jpg')}}" alt="" class="img-fluid">
                             </a>
                             <div class="menu-content">
-                                <a href="#" id="proname4">Tuscan Grilled</a><span>$<span class="price">9.95</span></span>
+                                <a href="#" id="proname4">Tuscan Grilled</a><span>$<span class="price">10</span></span>
                             </div>
                             <div class="menu-ingredients">
                                 Grilled chicken with provolone, artichoke hearts, and roasted red pesto
@@ -124,7 +124,7 @@
                                 <img src="{{asset('pages/assets/img/menu/mozzarella.jpg')}}" alt="" class="img-fluid">
                             </a>
                             <div class="menu-content">
-                                <a href="#" id="proname5">Mozzarella Stick</a><span>$<span class="price">4.95</span></span>
+                                <a href="#" id="proname5">Mozzarella Stick</a><span>$<span class="price">5</span></span>
                             </div>
                             <div class="menu-ingredients">
                                 Lorem, deren, trataro, filede, nerada
@@ -140,7 +140,7 @@
                                 <img src="{{asset('pages/assets/img/menu/greek-salad.jpg')}}" alt="" class="img-fluid">
                             </a>
                             <div class="menu-content">
-                                <a href="#" id="proname6">Greek Salad</a><span>$<span class="price">9.95</span></span>
+                                <a href="#" id="proname6">Greek Salad</a><span>$<span class="price">10</span></span>
                             </div>
                             <div class="menu-ingredients">
                                 Fresh spinach, crisp romaine, tomatoes, and Greek olives
@@ -156,7 +156,7 @@
                                 <img src="{{asset('pages/assets/img/menu/spinach-salad.jpg')}}" alt="" class="img-fluid">
                             </a>
                             <div class="menu-content">
-                                <a href="#" id="proname7">Spinach Salad</a><span>$<span class="price">9.95</span></span>
+                                <a href="#" id="proname7">Spinach Salad</a><span>$<span class="price">10</span></span>
                             </div>
                             <div class="menu-ingredients">
                                 Fresh spinach with mushrooms, hard boiled egg, and warm bacon vinaigrette
@@ -172,7 +172,7 @@
                                 <img src="{{asset('pages/assets/img/menu/lobster-roll.jpg')}}" alt="" class="img-fluid">
                             </a>
                             <div class="menu-content">
-                                <a href="#" id="proname8">Lobster Roll</a><span>$<span class="price">12.95</span></span>
+                                <a href="#" id="proname8">Lobster Roll</a><span>$<span class="price">13</span></span>
                             </div>
                             <div class="menu-ingredients">
                                 Plump lobster meat, mayo and crisp lettuce on a toasted bulky roll
@@ -223,10 +223,9 @@
 
 @endsection
 
-  
-    
 
-   
-   
-    
-   
+
+
+
+
+

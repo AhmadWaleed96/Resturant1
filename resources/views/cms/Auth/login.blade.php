@@ -25,7 +25,7 @@
       <a href="{{-- route('home') --}}" class="h1"><b></b>Viola</a>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Restaurant Viola  </p>
+      <p class="login-box-msg">Restaurant Viola</p>
 
       <form >
         <div class="input-group mb-3">
@@ -111,6 +111,6 @@
         });
   }
   </script>
- 
+
 </body>
 </html>

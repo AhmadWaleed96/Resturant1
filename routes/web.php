@@ -11,8 +11,8 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\RolePermissionController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\WaiterController;
-use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
+use GuzzleHttp\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,12 +26,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('cms.Auth.login');
+    return view('pages.home');
 });
 
 
 Route::prefix('cms/')->middleware('guest:admin,qarson')->group(function(){
-    route::get('{guard}/showLogin' , [UserAuthController::class , 'showLogin'])->name('view.login');
+    route::get('{guard}/Login' , [UserAuthController::class , 'Login'])->name('view.login');
     route::post('{guard}/login' , [UserAuthController::class , 'Login']);
 });
 Route::prefix('cms/admin')->middleware('auth:admin,qarson')->group(function(){
@@ -71,8 +71,8 @@ Route::prefix('cms/admin/')->middleware('auth:admin,qarson')->group(function(){
  Route::prefix('pages/admin/')->group(function(){
     Route::view('master', 'pages.master');
     Route::view('book-order', 'pages.book-order');
-    Route::view('delivery', 'pages.delivery');
-    Route::view('home', 'pages.home');
+    Route::view('delivery', 'pages.delivery')->name('restaurant.delivery');
+    Route::view('home', 'pages.home')->name('restaurant.home');
     Route::view('login', 'pages.login');
     Route::view('one-page', 'pages.one-page');
     Route::view('waiter', 'pages.waiter');

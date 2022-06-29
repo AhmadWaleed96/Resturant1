@@ -1,7 +1,7 @@
 
 @extends('pages/master')
 
-@section('title' , 'test title')
+@section('title' , ' Home')
 
 @section('styles')
 
@@ -13,7 +13,7 @@
 @section('sub-title','test')
 
 @section('content')
- 
+
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
     <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
@@ -817,7 +817,7 @@
 
 
 @section('scripts')
-{{-- <script>
+ <script>
     function performStore(){
       let formData = new FormData();
       formData.append('name' , document.getElementById('name').value);
@@ -827,11 +827,11 @@
     formData.append('time' , document.getElementById('time').value);
     formData.append('number_of_people' , document.getElementById('number_of_people').value);
     formData.append('nots' , document.getElementById('nots').value);
-    
+
       store('/pages/admin/homes' , formData);
     }
-    
-  </script> --}}
+
+  </script>
 
 @endsection
-  
+
