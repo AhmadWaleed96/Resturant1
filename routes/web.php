@@ -28,22 +28,17 @@ use Illuminate\Support\Facades\DB;
 */
 
 Route::get('/', function () {
-    $Delivery = \App\Models\Delivery::all();
-    dd($Delivery);
-    return view('pages.delivery');
+    return view('pages.home');
 });
 
-
 Route::prefix('cms/')->middleware('guest:admin,qarson')->group(function(){
-<<<<<<< HEAD
+
     route::get('{guard}/Login' , [UserAuthController::class , 'Login'])->name('view.login');
     route::get('{guard}/showLogin' , [UserAuthController::class , 'showLogin'])->name('view.login');
     route::post('{guard}/showLogin' , [UserAuthController::class , 'showLogin']);
-=======
 
     route::get('{guard}/login' , [UserAuthController::class , 'showLogin'])->name('view.login');
     route::post('{guard}/login' , [UserAuthController::class , 'Login']);
->>>>>>> b1b0e118e991c5743699d9193a7d777eaffaaf33
 });
 Route::prefix('cms/admin')->middleware('guest:admin,qarson')->group(function(){
     Route::get('profile/edit' , [UserAuthController::class , 'editProfile'])->name('cms.auth.profile-edit');
@@ -65,16 +60,16 @@ Route::prefix('cms/admin/')->middleware('guest:admin,qarson')->group(function(){
 
     Route::resource('qarsons' , QarsonController::class);
     Route::post('update_qarsons/{id}' , [QarsonController::class , 'update'])->name('update_qarsons');
-    
+
     Route::resource('roles', RoleController::class);
     Route::post('update_roles/{id}' , [RoleController::class , 'update'])->name('update_roles');
     Route::resource('permissions', PermissionController::class);
     Route::post('update_permissions/{id}' , [PermissionController::class , 'update'])->name('update_permissions');
     Route::resource('role.permissions', RolePermissionController::class);
-    
+
     Route::resource('items' , itemController::class);
     Route::post('update_items/{id}' , [itemController::class , 'update'])->name('update_items');
-    
+
 });
 
  Route::prefix('pages/admin/')->group(function(){
