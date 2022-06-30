@@ -36,23 +36,22 @@ Route::get('/', function () {
 
 
 Route::prefix('cms/')->middleware('guest:admin,qarson')->group(function(){
-<<<<<<< HEAD
     route::get('{guard}/Login' , [UserAuthController::class , 'Login'])->name('view.login');
     route::get('{guard}/showLogin' , [UserAuthController::class , 'showLogin'])->name('view.login');
     route::post('{guard}/showLogin' , [UserAuthController::class , 'showLogin']);
-=======
+
 
     route::get('{guard}/login' , [UserAuthController::class , 'showLogin'])->name('view.login');
     route::post('{guard}/login' , [UserAuthController::class , 'Login']);
->>>>>>> b1b0e118e991c5743699d9193a7d777eaffaaf33
+
 });
-Route::prefix('cms/admin')->middleware('guest:admin,qarson')->group(function(){
+Route::prefix('cms/admin')->middleware('auth:admin,qarson')->group(function(){
     Route::get('profile/edit' , [UserAuthController::class , 'editProfile'])->name('cms.auth.profile-edit');
     Route::post('profile/update' , [UserAuthController::class , 'updateProfile'])->name('cms.auth.update-profile');
     Route::get('/logout' , [UserAuthController::class , 'Logout'])->name('cms.admin.logout');
 });
 
-Route::prefix('cms/admin/')->middleware('guest:admin,qarson')->group(function(){
+Route::prefix('cms/admin/')->middleware('auth:admin,qarson')->group(function(){
     Route::view('', 'cms.parent');
     Route::resource('admins' , AdminController::class);
     Route::post('update_admins/{id}' , [AdminController::class , 'update'])->name('update_admins');
