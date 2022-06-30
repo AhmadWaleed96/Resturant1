@@ -280,6 +280,30 @@
                   <a href="#" class="nav-link">
                     <i class="fas fa-users"></i>
                     <p>
+                      المحاسب 
+                      <i class="fas fa-angle-left right"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="{{ route("accountants.create") }}" class="nav-link">
+                        <i class="fas fa-plus-circle nav-icon"></i>
+                          <p>أضافة</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{ route('accountants.index') }}" class="nav-link">
+                        <i class="fas fa-list nav-icon"></i>
+                        <p>عرض</p>
+                      </a>
+                    </li>
+
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="fas fa-users"></i>
+                    <p>
                       القرصون
                       <i class="fas fa-angle-left right"></i>
                     </p>

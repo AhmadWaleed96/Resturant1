@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountantController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BookTableController;
 use App\Http\Controllers\CityController;
@@ -77,6 +78,10 @@ Route::prefix('cms/admin/')->middleware('auth:admin,qarson')->group(function(){
     
     Route::resource('orders' , OrderController::class);
     Route::post('update_orders/{id}' , [OrderController::class , 'update'])->name('update_orders');
+    
+    Route::resource('accountants' , AccountantController::class);
+    Route::post('update_accountants/{id}' , [AccountantController::class , 'update'])->name('update_accountants');
+
 });
 
  Route::prefix('pages/admin/')->group(function(){
@@ -88,4 +93,5 @@ Route::prefix('cms/admin/')->middleware('auth:admin,qarson')->group(function(){
     Route::view('one-page', 'pages.one-page');
     Route::view('qarson', 'pages.qarson');
     Route::view('sessions', 'pages.sessions');
+    Route::view('register', 'pages.registar');
 });

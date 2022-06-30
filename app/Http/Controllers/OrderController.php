@@ -15,7 +15,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders=Order::orderBy("id",'desc')->get();
+        $orders=Order::with('item')->orderBy("id",'desc')->get();
         return response()->view('cms.order.index' , compact('orders'));
     }
 
