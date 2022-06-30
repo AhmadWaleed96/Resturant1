@@ -13,6 +13,7 @@ use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\WaiterController;
 use Illuminate\Support\Facades\Route;
 use GuzzleHttp\Middleware;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,17 +27,16 @@ use GuzzleHttp\Middleware;
 */
 
 Route::get('/', function () {
-    return view('pages.home');
+    $Delivery = \App\Models\Delivery::all();
+    dd($Delivery);
+    return view('pages.delivery');
 });
 
 
 Route::prefix('cms/')->middleware('guest:admin,qarson')->group(function(){
-<<<<<<< HEAD
     route::get('{guard}/Login' , [UserAuthController::class , 'Login'])->name('view.login');
-=======
-    route::get('{guard}/login' , [UserAuthController::class , 'showLogin'])->name('view.login');
->>>>>>> 38dcaa9dbdc8a60f342061e26c4d5044f29440bb
-    route::post('{guard}/login' , [UserAuthController::class , 'Login']);
+    route::get('{guard}/showLogin' , [UserAuthController::class , 'showLogin'])->name('view.login');
+    route::post('{guard}/showLogin' , [UserAuthController::class , 'showLogin']);
 });
 Route::prefix('cms/admin')->middleware('auth:admin,qarson')->group(function(){
     Route::get('profile/edit' , [UserAuthController::class , 'editProfile'])->name('cms.auth.profile-edit');
@@ -79,6 +79,6 @@ Route::prefix('cms/admin/')->middleware('auth:admin,qarson')->group(function(){
     Route::view('home', 'pages.home')->name('restaurant.home');
     Route::view('login', 'pages.login');
     Route::view('one-page', 'pages.one-page');
-    Route::view('waiter', 'pages.waiter');
+    Route::view('qarson', 'pages.qarson');
     Route::view('sessions', 'pages.sessions');
 });

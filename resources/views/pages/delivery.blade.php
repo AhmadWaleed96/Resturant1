@@ -16,6 +16,9 @@
 <main id="main">
     <section class="breadcrumbs">
         <div class="container">
+
+
+            @endforeach
             <!-- ======= Delivery Section ======= -->
             <section id="delivery" class="delivery section-bg">
                 <div class="container" data-aos="fade-up">
@@ -37,8 +40,9 @@
                     </div>
 
                     <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
+                        @foreach ($Deliverys as $Delivery)
 
-                        <div class="col-lg-6 menu-item filter-starters">
+                        <div class="col-lg-6 menu-item filter-starters" id="product1">
                             <a href="assets/img/menu/lobster-bisque.jpg" class="menu-img gallery-lightbox" data-gall="gallery-item">
                                 <img src="{{asset('pages/assets/img/menu/lobster-bisque.jpg')}}" alt="" class="img-fluid">
                             </a>
@@ -55,7 +59,7 @@
 
                         </div>
 
-                        <div class="col-lg-6 menu-item filter-specialty">
+                        <div class="col-lg-6 menu-item filter-specialty" id="product2">
                             <a href="assets/img/menu/bread-barrel.jpg" class="menu-img gallery-lightbox" data-gall="gallery-item">
                                 <img src="{{asset('pages/assets/img/menu/bread-barrel.jpg')}}" alt="" class="img-fluid">
                             </a>
@@ -71,7 +75,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-6 menu-item filter-starters">
+                        <div class="col-lg-6 menu-item filter-starters" id="product3">
                             <a href="assets/img/menu/cake.jpg" class="menu-img gallery-lightbox" data-gall="gallery-item">
                                 <img src="{{asset('pages/assets/img/menu/cake.jpg')}}" alt="" class="img-fluid">
                             </a>
@@ -87,7 +91,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-6 menu-item filter-salads">
+                        <div class="col-lg-6 menu-item filter-salads" id="product4">
                             <a href="assets/img/menu/caesar.jpg" class="menu-img gallery-lightbox" data-gall="gallery-item">
                                 <img src="{{asset('pages/assets/img/menu/caesar.jpg')}}" alt="" class="img-fluid">
                             </a>
@@ -103,7 +107,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-6 menu-item filter-specialty">
+                        <div class="col-lg-6 menu-item filter-specialty" id="product5">
                             <a href="assets/img/menu/tuscan-grilled.jpg" class="menu-img gallery-lightbox" data-gall="gallery-item">
                                 <img src="{{asset('pages/assets/img/menu/tuscan-grilled.jpg')}}" alt="" class="img-fluid">
                             </a>
@@ -119,7 +123,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-6 menu-item filter-starters">
+                        <div class="col-lg-6 menu-item filter-starters" id="product6">
                             <a href="assets/img/menu/mozzarella.jpg" class="menu-img gallery-lightbox" data-gall="gallery-item">
                                 <img src="{{asset('pages/assets/img/menu/mozzarella.jpg')}}" alt="" class="img-fluid">
                             </a>
@@ -135,7 +139,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-6 menu-item filter-salads">
+                        <div class="col-lg-6 menu-item filter-salads" id="product7">
                             <a href="assets/img/menu/greek-salad.jpg" class="menu-img gallery-lightbox" data-gall="gallery-item">
                                 <img src="{{asset('pages/assets/img/menu/greek-salad.jpg')}}" alt="" class="img-fluid">
                             </a>
@@ -151,7 +155,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-6 menu-item filter-salads">
+                        <div class="col-lg-6 menu-item filter-salads" id="product8">
                             <a href="assets/img/menu/spinach-salad.jpg" class="menu-img gallery-lightbox" data-gall="gallery-item">
                                 <img src="{{asset('pages/assets/img/menu/spinach-salad.jpg')}}" alt="" class="img-fluid">
                             </a>
@@ -167,7 +171,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-6 menu-item filter-specialty">
+                        <div class="col-lg-6 menu-item filter-specialty" id="product9">
                             <a href="assets/img/menu/lobster-roll.jpg" class="menu-img gallery-lightbox" data-gall="gallery-item">
                                 <img src="{{asset('pages/assets/img/menu/lobster-roll.jpg')}}" alt="" class="img-fluid">
                             </a>
@@ -182,7 +186,7 @@
                                 <button type="button" onclick="addList(this)" class="btn d-block" style="background-color: #cda45e; color: white;">Add Cart</button>
                             </div>
                         </div>
-
+                        @endforeach
                     </div>
 
                     <hr>
