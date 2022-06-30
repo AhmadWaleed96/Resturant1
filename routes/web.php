@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BookTableController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\itemController;
 use App\Http\Controllers\KitchenController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\QarsonController;
@@ -31,25 +32,18 @@ Route::get('/', function () {
 
 
 Route::prefix('cms/')->middleware('guest:admin,qarson')->group(function(){
-<<<<<<< HEAD
-    route::get('{guard}/Login' , [UserAuthController::class , 'Login'])->name('view.login');
-=======
+
     route::get('{guard}/login' , [UserAuthController::class , 'showLogin'])->name('view.login');
->>>>>>> 38dcaa9dbdc8a60f342061e26c4d5044f29440bb
     route::post('{guard}/login' , [UserAuthController::class , 'Login']);
 });
-Route::prefix('cms/admin')->middleware('auth:admin,qarson')->group(function(){
+Route::prefix('cms/admin')->middleware('guest:admin,qarson')->group(function(){
     Route::get('profile/edit' , [UserAuthController::class , 'editProfile'])->name('cms.auth.profile-edit');
     Route::post('profile/update' , [UserAuthController::class , 'updateProfile'])->name('cms.auth.update-profile');
     Route::get('/logout' , [UserAuthController::class , 'Logout'])->name('cms.admin.logout');
 });
 
-Route::prefix('cms/admin/')->middleware('auth:admin,qarson')->group(function(){
+Route::prefix('cms/admin/')->middleware('guest:admin,qarson')->group(function(){
     Route::view('', 'cms.parent');
-    Route::view('test' , 'cms.test');
-    Route::resource('kitchens' , KitchenController::class);
-    Route::resource('waiters' , WaiterController::class);
-    Route::post('update_waiters/{id}' , [WaiterController::class , 'update'])->name('update_waiters');
     Route::resource('admins' , AdminController::class);
     Route::post('update_admins/{id}' , [AdminController::class , 'update'])->name('update_admins');
     Route::resource('recepions' , RecepionController::class);
@@ -62,14 +56,16 @@ Route::prefix('cms/admin/')->middleware('auth:admin,qarson')->group(function(){
 
     Route::resource('qarsons' , QarsonController::class);
     Route::post('update_qarsons/{id}' , [QarsonController::class , 'update'])->name('update_qarsons');
-
+    
     Route::resource('roles', RoleController::class);
     Route::post('update_roles/{id}' , [RoleController::class , 'update'])->name('update_roles');
     Route::resource('permissions', PermissionController::class);
     Route::post('update_permissions/{id}' , [PermissionController::class , 'update'])->name('update_permissions');
     Route::resource('role.permissions', RolePermissionController::class);
-
-
+    
+    Route::resource('items' , itemController::class);
+    Route::post('update_items/{id}' , [itemController::class , 'update'])->name('update_items');
+    
 });
 
  Route::prefix('pages/admin/')->group(function(){

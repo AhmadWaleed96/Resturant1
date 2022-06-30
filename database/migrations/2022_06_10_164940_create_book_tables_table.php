@@ -22,8 +22,6 @@ class CreateBookTablesTable extends Migration
             $table->string('time');
             $table->integer('number_of_people');
             $table->string('nots');
-            $table->foreignId('recepion_id');
-            $table->foreign('recepion_id')->on('recepions')->references('id');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -27,7 +27,7 @@
                           <span>
                               <i class="flaticon2-search-1 text-muted"></i>
                           </span>
-<<<<<<< HEAD
+
                         </div>
 
                         <div class="input-icon col-md-2">
@@ -40,7 +40,6 @@
 
                         <div class="input-icon col-md-2">
                         <input type="date" class="form-control" placeholder="Search By Date"
-=======
                         </div> --}}
 
                         {{-- <div class="input-icon col-md-2">
@@ -53,16 +52,12 @@
 
                         {{-- <div class="input-icon col-md-2">
                         <input type="date" class="form-control" placeholder="بحث باستخدام تاريخ الاضافة"
->>>>>>> 68b637080135210d1a0499e4615c757c3f484600
                            name='created_at' @if( request()->created_at) value={{request()->created_at}} @endif/>
                           <span>
                               <i class="flaticon2-search-1 text-muted"></i>
                           </span>
-<<<<<<< HEAD
                         </div>
-=======
                         </div> --}}
->>>>>>> 68b637080135210d1a0499e4615c757c3f484600
 
                 <div class="col-md-4">
                       {{-- <button class="btn btn-success btn-md" type="submit">فلتر البحث</button>
@@ -73,11 +68,8 @@
 
 
               </div>
-<<<<<<< HEAD
-                </form> --}}
-=======
+                </form> 
         </form>
->>>>>>> 68b637080135210d1a0499e4615c757c3f484600
 
 
           <!-- /.card-header -->
@@ -87,6 +79,7 @@
                 <tr class="bg-info">
                   {{-- <th> رقم المشرف </th> --}}
                   <th>  اسم المشرف  </th>
+                  <th>  المدينة </th>
                   <th>  تاريخ الميلاد </th>
                   <th>  الأيميل </th>
                   <th>   الصورة الشخصية </th>
@@ -94,31 +87,15 @@
 
                   <th> الاعدادات </th>
                     {{-- <td>
-                  <td>{{$admin->user ? $admin->user->first_name . ' '.  $admin->user->last_name : "Null"}}</td>
-                  </td> --}}
+                    </td> --}}
                 </tr>
-              </thead>
-              <tbody>
+            </thead>
+            <tbody>
                 @foreach ($admins as $admin )
                 <tr>
-
-                  <td>{{$admin->id}}</td>
-                  <td>{{$admin->user->first_name}}</td>
-                  <td>{{$admin->user->last_name}}</td>
-                  <td>{{$admin->user->number}}</td>
-                  <td>{{$admin->user->age}}</td>
-                  <td>{{$admin->user->email}}</td>
-                  <td>{{$admin->user->password}}</td>
-                  <td>{{$admin->user->city}}</td>
-                  <td>{{$admin->user->gender}}</td>
-                  <td>
-                    {{-- <img class="img-circle img-bordered-sm" src="{{asset('/images/admin/'.$admin->image)}}" width="60" height="60" alt="User Image"> --}}
-                  </td>
-
-
-                  {{-- <td>{{$admin->id}}</td> --}}
-
-                  <td>{{$admin->user ? $admin->user->first_name . ' ' . $admin->user->last_name : "Null"}}</td>
+                    
+                    <td>{{$admin->user ? $admin->user->first_name . ' '.  $admin->user->last_name : "Null"}}</td>
+                  <td>{{$admin->user->city->name}}</td>
                   <td>{{$admin->user ? $admin->user->date_of_birth : "Null"}}</td>
                   <td>{{$admin->email}}</td>
                   <td>  <img class="img-circle img-bordered-sm" src="{{asset('storage/images/admin/'.$admin->image)}}" width="60" height="60" alt="User Image"> </td>
