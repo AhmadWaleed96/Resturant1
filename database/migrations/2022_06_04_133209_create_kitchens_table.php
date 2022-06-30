@@ -17,6 +17,7 @@ class CreateKitchensTable extends Migration
             $table->id();
             $table->string('internal_order');
             $table->string('external_order');
+            
             $table->timestamps();
         });
     }

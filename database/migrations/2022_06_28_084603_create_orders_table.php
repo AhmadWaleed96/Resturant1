@@ -17,7 +17,8 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->date('date_day')->nullable();
             $table->time('date_time')->nullable();
-            $table->integer('item_id');
+            $table->foreignId('item_id');
+            $table->foreign('item_id')->on('orders')->references('id');
             $table->timestamps();
             $table->softDeletes();
         });

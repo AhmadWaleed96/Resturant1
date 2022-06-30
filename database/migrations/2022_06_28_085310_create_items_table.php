@@ -17,6 +17,9 @@ class CreateItemsTable extends Migration
             $table->id();
             $table->string('name_product')->nullable();
             $table->string('price')->nullable();
+            $table->string('image')->nullable();
+            $table->foreignId('kitchen_id');
+            $table->foreign('kitchen_id')->on('kitchens')->references('id');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\item;
+use App\Models\Kitchen;
 use Illuminate\Http\Request;
 
 class itemController extends Controller
@@ -13,7 +15,8 @@ class itemController extends Controller
      */
     public function index()
     {
-        //
+        $items=item::orderBy('id','desc')->get();
+        return response()->view('cms.itme.index',compact('items'));
     }
 
     /**
@@ -23,7 +26,9 @@ class itemController extends Controller
      */
     public function create()
     {
-        //
+        $Kitchens=Kitchen::all();
+        return response()->view('cms.itme.create',compact('Kitchens'));
+
     }
 
     /**
@@ -34,7 +39,39 @@ class itemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator($request->all(),[
+
+        ]);
+
+        if(! $validator->fails()){
+            $itmes=new item();
+            $itmes->name_product=$request->get('name_product');
+            $itmes->price=$request->get('price');
+            $itmes->kitchen_id=$request->get('kitchen_id');
+
+            if (request()->hasFile('image')) {
+
+                $image = $request->file('image');
+
+                $imageName = time() . 'image.' . $image->getClientOriginalExtension();
+
+                $image->move('storage/images/item', $imageName);
+
+                $itmes->image = $imageName;
+
+                }
+                $isSaved=$itmes->save();
+                if($isSaved){
+                    return response()->json(['icon'=>'success','title'=>'تم تسجيل الاصناف بنجاح'],200);
+                }else{
+                    return response()->json(['icon'=>'error','title'=>'فشل تسجيل الاصناف  '],400);
+
+                }
+
+        }
+        else{
+            return response()->json(['icon' => 'error' , 'title' =>$validator->getMessageBag()->first()] , 400);
+        }
     }
 
     /**
@@ -56,7 +93,9 @@ class itemController extends Controller
      */
     public function edit($id)
     {
-        //
+        $items=item::findOrFail($id);
+        $Kitchens=Kitchen::all();
+        return response()->view('cms.itme.edit',compact('Kitchens','items'));
     }
 
     /**
@@ -68,7 +107,40 @@ class itemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator($request->all(),[
+
+        ]);
+
+        if(! $validator->fails()){
+            $itmes=item::findOrFail($id);
+            $itmes->name_product=$request->get('name_product');
+            $itmes->price=$request->get('price');
+            $itmes->kitchen_id=$request->get('kitchen_id');
+
+            if (request()->hasFile('image')) {
+
+                $image = $request->file('image');
+
+                $imageName = time() . 'image.' . $image->getClientOriginalExtension();
+
+                $image->move('storage/images/item', $imageName);
+
+                $itmes->image = $imageName;
+
+                }
+                $isSaved=$itmes->save();
+                return ['redirect'=>route('items.index')];
+                if($isSaved){
+                    return response()->json(['icon'=>'success','title'=>'تم تعديل الاصناف بنجاح'],200);
+                }else{
+                    return response()->json(['icon'=>'error','title'=>'فشل تعديل الاصناف  '],400);
+
+                }
+
+        }
+        else{
+            return response()->json(['icon' => 'error' , 'title' =>$validator->getMessageBag()->first()] , 400);
+        }
     }
 
     /**
@@ -79,6 +151,6 @@ class itemController extends Controller
      */
     public function destroy($id)
     {
-        //
+        item::destroy($id);
     }
 }
