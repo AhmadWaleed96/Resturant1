@@ -1,5 +1,5 @@
 @extends('cms.parent')
-@section('title','التصنيفات ')
+@section('title','الطلبات ')
 
 
 @section('styles')
@@ -52,8 +52,8 @@
 
                                </div>
                       </form> --}}
+                      <a href="{{route('orders.create')}}"><button type="button" class="btn btn-primary">انشاء طلب </button></a>
                       <div class="card-tools">
-                          <a href="{{route('items.create')}}"><button type="button" class="btn btn-lg btn-primary">انشاء صنف جديد </button></a>
                           <br>
                         </div>
 
@@ -62,34 +62,32 @@
                             <table class="table table-hover table-bordered table-striped text-nowrap text-center">
               <thead>
                 <tr class="bg-info">
-                  <th> رقم الصنف </th>
-                  <th>  اسم الوجبة </th>
-                  <th> السعر </th>
-                  <th> الصورة </th>
-                  <th> رقم المطبخ </th>
+                  <th> رقم الطلب </th>
+                  <th>   اليوم والوقت </th>
+                  <th> رقم الوجبة </th>
                   <th> الاعدادات </th>
                 </tr>
               </thead>
               <tbody>
-                @foreach ($items as $item )
+                @foreach ($orders as $order )
                 <tr>
-                  <td>{{$item->id}}</td>
-                  <td>{{$item->name_product}}</td>
-                  <td>{{$item->price}}</td>
-                  <td>
-                    <img class="img-circle img-bordered-sm" src="{{asset('storage/images/item'.$item->image)}}" width="60" height="60" alt="User Image">
-                  </td>
-                  <td>{{$item->kitchen_id}}</td>
+                  <td>{{$order->id}}</td>
+                  {{-- <td>{{$order->who}}</td> --}}
+                  {{-- <td>
+                    <img class="img-circle img-bordered-sm" src="{{asset('images/city_who/'.$order->image_who)}}" width="60" height="60" alt="User Image">
+                  </td> --}}
+                  <td>{{$order->date_day.' / '.$order->date_time}}</td>
+                  <td ><span class="badge bg-green">{{$order->item_id}}</span></td>
 
                   <td>
                     <div class="btn-group">
                       {{-- @can('Edit-City') --}}
-                      <a href="{{route('items.edit',$item->id)}}" class="btn btn-info" title="Edit">
+                      <a href="{{route('orders.edit',$order->id)}}" class="btn btn-info" title="Edit">
                         تعديل
                         </a>
                       {{-- @endcan --}}
                       {{-- @can('Delete-City') --}}
-                      <a href="#" onclick="performDestroy({{$item->id}}, this)" class="btn btn-danger" title="Delete">
+                      <a href="#" onclick="performDestroy({{$order->id}}, this)" class="btn btn-danger" title="Delete">
                         حذف
                       </a>
                       {{-- @endcan --}}
@@ -102,7 +100,7 @@
             </table>
             <div class="span text-center" style="margin-top: 20px; margin-bottom:10px">
 
-                {{-- {{ $itmes->links() }} --}}
+                {{-- {{ $orders->links() }} --}}
 
             </span>
 
@@ -123,7 +121,7 @@
 
  <script>
   function performDestroy(id, reference){
-    let url = '/cms/admin/items/'+id;
+    let url = '/cms/admin/orders/'+id;
     confirmDestroy(url, reference);
   }
  </script>

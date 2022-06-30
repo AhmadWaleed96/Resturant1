@@ -30,7 +30,7 @@
 
 
                             <div class="form-group col-md-6">
-                                <label for="name_product">اسم المنتج</label>
+                                <label for="name_product">اسم الوجبة</label>
                                 <input type="text" name="name_product" class="form-control" id="name_product"
                                     placeholder="أدخل اسم المنتج">
                             </div>
@@ -48,7 +48,7 @@
                                     placeholder="ادخل  الصورة">
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="kitchen_id">فترة الدوام</label>
+                                <label for="kitchen_id">رقم المطبخ</label>
                                 <select class="form-control" name="kitchen_id"
                                     id="kitchen_id">
                                     @foreach ($Kitchens as $kitchen)

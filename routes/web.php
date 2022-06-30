@@ -5,6 +5,7 @@ use App\Http\Controllers\BookTableController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\itemController;
 use App\Http\Controllers\KitchenController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\QarsonController;
 use App\Http\Controllers\RecepionController;
@@ -66,6 +67,8 @@ Route::prefix('cms/admin/')->middleware('guest:admin,qarson')->group(function(){
     Route::resource('items' , itemController::class);
     Route::post('update_items/{id}' , [itemController::class , 'update'])->name('update_items');
     
+    Route::resource('orders' , OrderController::class);
+    Route::post('update_orders/{id}' , [OrderController::class , 'update'])->name('update_orders');
 });
 
  Route::prefix('pages/admin/')->group(function(){

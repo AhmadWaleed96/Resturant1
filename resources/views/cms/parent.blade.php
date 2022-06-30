@@ -333,21 +333,45 @@
                   <a href="#" class="nav-link">
                     <i class="fas fa-utensils"></i>
                     <p>
-                      Title
+                      التصنيفات 
                       <i class="fas fa-angle-left right"></i>
                     </p>
                   </a>
                   <ul class="nav nav-treeview">
                     <li class="nav-item">
-                      <a href="" class="nav-link">
+                      <a href="{{ route('items.create') }}" class="nav-link">
                         <i class="fas fa-plus-circle nav-icon"></i>
-                          <p>create</p>
+                          <p>اضافة</p>
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a href="" class="nav-link">
+                      <a href="{{ route('items.index') }}" class="nav-link">
                         <i class="fas fa-list nav-icon"></i>
-                        <p>index</p>
+                        <p>عرض</p>
+                      </a>
+                    </li>
+
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="fas fa-utensils"></i>
+                    <p>
+                      الطلبات 
+                      <i class="fas fa-angle-left right"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="{{ route('orders.create') }}" class="nav-link">
+                        <i class="fas fa-plus-circle nav-icon"></i>
+                          <p>اضافة</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{ route('orders.index') }}" class="nav-link">
+                        <i class="fas fa-list nav-icon"></i>
+                        <p>عرض</p>
                       </a>
                     </li>
 
