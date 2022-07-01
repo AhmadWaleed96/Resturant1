@@ -121,7 +121,7 @@
 
 
                             </div>
-                           
+
 
                         </div>
 
@@ -159,9 +159,7 @@ $('.city_id').select2({
       theme: 'bootstrap4'
     });
 
-$('.role_id').select2({
-      theme: 'bootstrap4'
-    })
+
 
 
     function performStore() {
@@ -177,7 +175,7 @@ $('.role_id').select2({
             formData.append('gender',document.getElementById('gender').value);
             formData.append('age',document.getElementById('age').value);
             formData.append('city_id',document.getElementById('city_id').value);
-           
+
 
         store('/cms/admin/accountants',formData);
 

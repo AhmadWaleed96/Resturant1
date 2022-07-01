@@ -33,21 +33,21 @@
                   <div class="row">
                     <div class="form-group col-md-6">
                         <label for="name">الاسم</label>
-                        <input type="text" class="form-control" name="name" value="" id="name" placeholder=" اكتب الاسم">
+                        <input type="text" class="form-control" name="name"  id="name" placeholder=" اكتب الاسم">
                       </div>
                       <div class="form-group col-md-6">
                         <label for="email">الايميل</label>
-                        <input type="email" class="form-control" name="email" value="" id="email" placeholder="اكتب الايميل">
+                        <input type="email" class="form-control" name="email"  id="email" placeholder="اكتب الايميل">
                       </div>
                       <div class="form-group col-md-6">
                         <label for="mobile">رقم الهاتف المحمول</label>
-                        <input type="number" class="form-control" name="mobile" value="" id="mobile" placeholder=" رقم الهاتف">
+                        <input type="text" class="form-control" name="mobile" id="mobile" placeholder=" رقم الهاتف">
                       </div>
                       <div class="form-group col-md-6">
-                        <label for="mobile">عدد الأشخاص</label>
-                        <input type="number" class="form-control" name="number_of_people" value="" id="number_of_people" placeholder=" عدد الأشخاص">
+                        <label for="number_of_people">عدد الأشخاص</label>
+                        <input type="number" class="form-control" name="number_of_people" id="number_of_people" placeholder=" عدد الأشخاص">
                       </div>
-                      <div class="form-group col-md-6">
+                      {{-- <div class="form-group col-md-6">
                         <label for="mobile">بدأ الحجز</label>
                         <select class="form-select form-select-sm text-center" name="time" style="width: 100%;" id="time" aria-label=".form-select-sm example">
                                 <option value="1">1 : 00 AM</option>
@@ -75,10 +75,18 @@
                                 <option value="23">11 : 00 BM</option>
                                 <option value="24">12 : 00 BM</option>
                         </select>
+                      </div> --}}
+                      <div class="form-group col-md-6">
+                        <label for="time">تاريخ يوم الحجز</label>
+                        <input type="time" class="form-control" name="time" id="time" placeholder=" اكتب تاريخ يوم الحجز">
                       </div>
                       <div class="form-group col-md-6">
                         <label for="date">تاريخ يوم الحجز</label>
-                        <input type="date" class="form-control" name="date" value="" id="date" placeholder=" اكتب تاريخ يوم الحجز">
+                        <input type="date" class="form-control" name="date"  id="date" placeholder=" اكتب تاريخ يوم الحجز">
+                      </div>
+                      <div class="form-group col-md-12">
+                        <label for="nots">Textarea</label>
+                        <textarea class="form-control" rows="3" id="nots" name="nots" placeholder="Enter ..."></textarea>
                       </div>
                 </div>
 
@@ -107,18 +115,21 @@
 
 @section('scripts')
 <script>
-    function performStore(){
-      let formData = new FormData();
-      formData.append('name' , document.getElementById('name').value);
-    formData.append('email' , document.getElementById('email').value);
-    formData.append('mobile' , document.getElementById('mobile').value);
-    formData.append('date' , document.getElementById('date').value);
-    formData.append('time' , document.getElementById('time').value);
-    formData.append('number_of_people' , document.getElementById('number_of_people').value);
-    // formData.append('nots' , document.getElementById('nots').value);
-    // formData.append('recepion_id' , document.getElementById('recepion_id').value);
-      store('/cms/admin/booktables' , formData);
-    }
+   function performStore() {
+
+let formData = new FormData();
+    formData.append('name',document.getElementById('name').value);
+    formData.append('email',document.getElementById('email').value);
+    formData.append('mobile',document.getElementById('mobile').value);
+    formData.append('number_of_people',document.getElementById('number_of_people').value);
+    formData.append('time',document.getElementById('time').value);
+    formData.append('date',document.getElementById('date').value);
+    formData.append('nots',document.getElementById('nots').value);
+
+
+store('/cms/admin/books',formData);
+
+}
 
   </script>
 

@@ -32,9 +32,5 @@ class CreateDeliveriesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('deliveries');
-<<<<<<< HEAD:database/migrations/2022_06_30_091053_create_deliveries_table.php
-        Schema::dropIfExists('bookings');
-=======
->>>>>>> 2456e93d1c4d653d18682123b2e419cd41c9a7a1:database/migrations/2022_06_30_180949_create_deliveries_table.php
     }
 }

@@ -15,7 +15,7 @@ class BookTableController extends Controller
     public function index()
     {
         $booktables = BookTable::orderBy('id' ,'desc')->paginate(10);
-        return response()->view('cms.book a table.index' , compact('booktables'));
+        return response()->view('cms.book_table.index' , compact('booktables'));
 
     }
 
@@ -26,8 +26,8 @@ class BookTableController extends Controller
      */
     public function create()
     {
-        $booktables = BookTable::all();
-        return response()->view('cms.book a table.create' , compact('booktables'));
+
+        return response()->view('cms.book_table.create');
     }
 
     /**
@@ -38,27 +38,25 @@ class BookTableController extends Controller
      */
     public function store(Request $request)
     {
+
         $validator = Validator($request->all(),[
-            // 'room_number' => 'required|string|min:3|max:20',
-            // 'from' => 'required|string',
-            // 'to' => 'required|string',
+            // 'image'=>"image|max:2048|mimes:png,jpg,jpeg,pdf",
+
         ]);
 
-        if(!$validator->fails()){
-        $booktables = new BookTable();
-        $booktables->name = $request->get('name');
-        $booktables->email = $request->get('email');
-        $booktables->mobile = $request->get('mobile');
-        $booktables->date = $request->get('date');
-        $booktables->time = $request->get('time');
-        $booktables->number_of_people = $request->get('number_of_people');
-        $booktables->nots = $request->get('nots');
+        if(! $validator->fails()){
+            $booktables = new BookTable();
+            $booktables->name = $request->get('name');
+            $booktables->email = $request->get('email');
+            $booktables->mobile = $request->get('mobile');
+            $booktables->time = $request->get('time');
+            $booktables->number_of_people = $request->get('number_of_people');
+            $booktables->date = $request->get('date');
+            $booktables->nots = $request->get('nots');
 
         $isSaved = $booktables->save();
-
         if($isSaved){
-            return response()->json(['icon' => ' success' , 'title' => 'تم إضافة الحجز بنجاح'] , 200);
-
+            return response()->json(['icon' => 'success' , 'title' => 'تم إضافة الحجز بنجاح '] , 200);
         }
         else{
             return response()->json(['icon' => 'error' , 'title' => 'فشلت إضافة الحجز'] , 400);
@@ -67,7 +65,9 @@ class BookTableController extends Controller
         else{
             return response()->json(['icon' => 'error' , 'title' => $validator->getMessageBag()->first()] , 400);
         }
+
     }
+
 
     /**
      * Display the specified resource.
@@ -78,7 +78,7 @@ class BookTableController extends Controller
     public function show($id)
     {
         $booktables = BookTable::findOrFail($id);
-        return response()->view('cms.book a Table.show' , compact('booktables'));
+        return response()->view('cms.book_Table.show' , compact('booktables'));
     }
 
     /**
@@ -90,7 +90,7 @@ class BookTableController extends Controller
     public function edit($id)
     {
         $booktables = BookTable::findOrFail($id);
-        return response()->view('cms.book a Table.edit' , compact('booktables'));
+        return response()->view('cms.book_Table.edit' , compact('booktables'));
     }
 
     /**
