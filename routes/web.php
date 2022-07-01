@@ -5,6 +5,7 @@ use App\Http\Controllers\AccountantController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BookTableController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\itemController;
 use App\Http\Controllers\KitchenController;
 use App\Http\Controllers\OrderController;
@@ -39,6 +40,7 @@ Route::prefix('cms/')->middleware('guest:admin')->group(function(){
     route::post('{guard}/login' , [UserAuthController::class , 'Login'])->name('view.login');
     route::get('{guard}/login' , [UserAuthController::class , 'showLogin'])->name('view.login');
     Route::post('store_books' , [BookTableController::class , 'storeFront'])->name('store_books');
+    Route::post('store_contacts' , [ContactController::class , 'store'])->name('store_contacts');
 });
 
 Route::prefix('cms/admin')->middleware('auth:admin')->group(function(){
@@ -79,6 +81,9 @@ Route::prefix('cms/admin/')->middleware('auth:admin')->group(function(){
 
     Route::resource('books', BookTableController::class);
     Route::post('update_books/{id}' , [BookTableController::class , 'update'])->name('update_books');
+    
+    Route::resource('contacts', ContactController::class);
+    Route::post('update_contacts/{id}' , [ContactController::class , 'update'])->name('update_contacts');
 });
 
  Route::prefix('pages/admin/')->group(function(){
