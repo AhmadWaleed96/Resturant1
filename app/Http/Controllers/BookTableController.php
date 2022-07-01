@@ -14,8 +14,9 @@ class BookTableController extends Controller
      */
     public function index()
     {
-        $booktables = BookTable::orderBy('id' , 'desc')->paginate(5);
-        return response()->view('cms.book a table.index',compact('booktables'));
+        $booktables = BookTable::orderBy('id' ,'desc')->paginate(10);
+        return response()->view('cms.book a table.index' , compact('booktables'));
+
     }
 
     /**
@@ -37,32 +38,32 @@ class BookTableController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator($request->all()
+        $validator = Validator($request->all(),[
+            // 'room_number' => 'required|string|min:3|max:20',
+            // 'from' => 'required|string',
+            // 'to' => 'required|string',
+        ]);
 
-    );
-        if(! $validator->fails()){
-            $booktables = new BookTable();
-            $booktables->name = $request->get('name');
-            $booktables->email = $request->get('email');
-            $booktables->mobile = $request->get('mobile');
-            $booktables->date = $request->get('date');
-            $booktables->time = $request->get('time');
-            $booktables->number_of_people = $request->get('number_of_people');
-            // $booktables->nots = $request->get('nots');
-            // $booktables->recepion_id = $request->get('recepion_id');
+        if(!$validator->fails()){
+        $booktables = new BookTable();
+        $booktables->name = $request->get('name');
+        $booktables->email = $request->get('email');
+        $booktables->mobile = $request->get('mobile');
+        $booktables->date = $request->get('date');
+        $booktables->time = $request->get('time');
+        $booktables->number_of_people = $request->get('number_of_people');
+        $booktables->nots = $request->get('nots');
 
-            $isSaved = $booktables->save();
+        $isSaved = $booktables->save();
 
-            if($isSaved){
-                return response()->json(['icon' => 'success' , 'title' => 'تم إضافة الحجز بنجاح'] , 200);
-
-            }
-            else{
-                return response()->json(['icon' => 'error' , 'title' => 'فشلت إضافة الحجز'] , 400);
-            }
+        if($isSaved){
+            return response()->json(['icon' => ' success' , 'title' => 'تم إضافة الحجز بنجاح'] , 200);
 
         }
-
+        else{
+            return response()->json(['icon' => 'error' , 'title' => 'فشلت إضافة الحجز'] , 400);
+        }
+    }
         else{
             return response()->json(['icon' => 'error' , 'title' => $validator->getMessageBag()->first()] , 400);
         }

@@ -1,9 +1,9 @@
 let tableShow = document.querySelector("#tableShow")
 
 
-let countPro = document.querySelector("#countPro")
+let countPro = document.querySelector("#count")
 let price = document.querySelector("#price")
-let proName = document.querySelector("#proname")
+let proName = document.querySelector("#product")
 let total = document.querySelector("#total")
 let products;
 

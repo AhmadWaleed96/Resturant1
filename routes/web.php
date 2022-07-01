@@ -1,10 +1,11 @@
 <?php
-
+use App\Http\Controllers\SellController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BookTableController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\itemController;
 use App\Http\Controllers\KitchenController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\QarsonController;
 use App\Http\Controllers\RecepionController;
@@ -31,22 +32,20 @@ Route::get('/', function () {
     return view('pages.home');
 });
 
-Route::prefix('cms/')->middleware('guest:admin,qarson')->group(function(){
+Route::prefix('cms/')->middleware('guest:admin')->group(function(){
 
     route::get('{guard}/Login' , [UserAuthController::class , 'Login'])->name('view.login');
     route::get('{guard}/showLogin' , [UserAuthController::class , 'showLogin'])->name('view.login');
     route::post('{guard}/showLogin' , [UserAuthController::class , 'showLogin']);
-
-    route::get('{guard}/login' , [UserAuthController::class , 'showLogin'])->name('view.login');
-    route::post('{guard}/login' , [UserAuthController::class , 'Login']);
 });
-Route::prefix('cms/admin')->middleware('guest:admin,qarson')->group(function(){
+
+Route::prefix('cms/admin')->middleware('auth:admin')->group(function(){
     Route::get('profile/edit' , [UserAuthController::class , 'editProfile'])->name('cms.auth.profile-edit');
     Route::post('profile/update' , [UserAuthController::class , 'updateProfile'])->name('cms.auth.update-profile');
     Route::get('/logout' , [UserAuthController::class , 'Logout'])->name('cms.admin.logout');
 });
 
-Route::prefix('cms/admin/')->middleware('guest:admin,qarson')->group(function(){
+Route::prefix('cms/admin/')->middleware('auth:admin')->group(function(){
     Route::view('', 'cms.parent');
     Route::resource('admins' , AdminController::class);
     Route::post('update_admins/{id}' , [AdminController::class , 'update'])->name('update_admins');
@@ -70,6 +69,9 @@ Route::prefix('cms/admin/')->middleware('guest:admin,qarson')->group(function(){
     Route::resource('items' , itemController::class);
     Route::post('update_items/{id}' , [itemController::class , 'update'])->name('update_items');
 
+    Route::resource('orders' , OrderController::class);
+    Route::post('update_orders/{id}' , [OrderController::class , 'update'])->name('update_orders');
+
 });
 
  Route::prefix('pages/admin/')->group(function(){
@@ -81,4 +83,6 @@ Route::prefix('cms/admin/')->middleware('guest:admin,qarson')->group(function(){
     Route::view('one-page', 'pages.one-page');
     Route::view('qarson', 'pages.qarson');
     Route::view('sessions', 'pages.sessions');
+    Route::view('sells', [SellController::class , 'order']);
+    Route::resource('books', BookTableController::class);
 });

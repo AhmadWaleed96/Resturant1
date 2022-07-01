@@ -5,10 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Delivery extends Model
+class sells extends Model
 {
     use HasFactory;
-    // public function kitchen(){
-    //     return $this->belongsTo(kitchen::class);
-    // }
 }

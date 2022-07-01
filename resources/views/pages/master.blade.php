@@ -176,6 +176,7 @@
     <!-- Template Main JS File -->
     <script src="{{asset('pages/assets/js/main.js')}} "></script>
     <script src="{{asset('pages/assets/js/app.js')}} "></script>
+    <script src="{{ asset('pages/assets/js/crud.js') }}"></script>
     @yield('scripts')
 
 </body>

@@ -438,43 +438,39 @@
                 <p>Book a Table</p>
             </div>
 
-            <form action="forms/book-a-table.php" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
+            <form>
                 <div class="row">
                     <div class="col-lg-4 col-md-6 form-group">
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                        <div class="validate"></div>
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Your Name">
+
                     </div>
                     <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
-                        <div class="validate"></div>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email">
+
                     </div>
                     <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-                        <input type="text" class="form-control" name="mobile" id="mobile" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                        <div class="validate"></div>
+                        <input type="text" class="form-control" name="mobile" id="mobile" placeholder="Your Phone">
+
                     </div>
                     <div class="col-lg-4 col-md-6 form-group mt-3">
-                        <input type="date" name="date" class="form-control" id="date" placeholder="Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                        <div class="validate"></div>
+                        <input type="date" name="date" class="form-control" id="date" placeholder="Date">
+
                     </div>
                     <div class="col-lg-4 col-md-6 form-group mt-3">
-                        <input type="text" class="form-control" name="time" id="time" placeholder="Time" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                        <div class="validate"></div>
+                        <input type="text" class="form-control" name="time" id="time" placeholder="Time">
+
                     </div>
                     <div class="col-lg-4 col-md-6 form-group mt-3">
-                        <input type="number" class="form-control" name="number_of_people" id="number_of_people" placeholder="number_of_people" data-rule="minlen:1" data-msg="Please enter at least 1 chars">
-                        <div class="validate"></div>
+                        <input type="number" class="form-control" name="number_of_people" id="number_of_people" placeholder="number_of_people" >
+
                     </div>
                 </div>
                 <div class="form-group mt-3">
                     <textarea class="form-control" name="nots" id="nots" rows="5" placeholder="Message"></textarea>
-                    <div class="validate"></div>
                 </div>
-                <div class="mb-3">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
+
                 </div>
-                <div class="text-center"><button type="bu" onclick="performStore()">Book a Table</button></div>
+                <div class="text-center"><button type="submit" onclick="performStore()">Book a Table</button></div>
             </form>
 
         </div>
@@ -828,7 +824,7 @@
     formData.append('number_of_people' , document.getElementById('number_of_people').value);
     formData.append('nots' , document.getElementById('nots').value);
 
-      store('/pages/admin/homes' , formData);
+      store('/cms/admin/booktables' , formData);
     }
 
   </script>
