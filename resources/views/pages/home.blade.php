@@ -837,7 +837,7 @@ let formData = new FormData();
     formData.append('nots',document.getElementById('nots').value);
 
 
-store('/cms/admin/store_books',formData);
+store('/cms/store_books',formData);
 
 }
 

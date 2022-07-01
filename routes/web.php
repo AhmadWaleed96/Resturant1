@@ -38,6 +38,7 @@ Route::prefix('cms/')->middleware('guest:admin')->group(function(){
 
     route::post('{guard}/login' , [UserAuthController::class , 'Login'])->name('view.login');
     route::get('{guard}/login' , [UserAuthController::class , 'showLogin'])->name('view.login');
+    Route::post('store_books' , [BookTableController::class , 'storeFront'])->name('store_books');
 });
 
 Route::prefix('cms/admin')->middleware('auth:admin')->group(function(){
@@ -78,7 +79,6 @@ Route::prefix('cms/admin/')->middleware('auth:admin')->group(function(){
 
     Route::resource('books', BookTableController::class);
     Route::post('update_books/{id}' , [BookTableController::class , 'update'])->name('update_books');
-    Route::post('store_books' , [BookTableController::class , 'storeFront'])->name('store_books');
 });
 
  Route::prefix('pages/admin/')->group(function(){
