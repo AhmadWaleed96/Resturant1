@@ -3,10 +3,10 @@
 
 @section('title' , ' Home')
 
-
+@section('styles')
 <link rel="stylesheet" href="{{ asset('cms/plugins/toastr/toastr.min.css') }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-
+@endsection
 
 
 
@@ -806,7 +806,7 @@
                             <div class="error-message"></div>
                             <div class="sent-message">Your message has been sent. Thank you!</div>
                         </div>
-                        <div class="text-center"><button type="button" onclick="Store()"  class="btn btn-warning">Send Message</button></div>
+                        <div class="text-center"><button type="button" onclick="SaveStore()"  class="btn btn-warning">Send Message</button></div>
                     </form>
 
                 </div>
@@ -822,7 +822,7 @@
 
 @endsection
 
-
+@section('scripts')
 
  <script>
        function performStore() {
@@ -837,7 +837,7 @@ let formData = new FormData();
     formData.append('nots',document.getElementById('nots').value);
 
 
-store('/cms/store_books',formData);
+store('/cms/admin/store_books',formData);
 
 }
 
@@ -845,23 +845,22 @@ store('/cms/store_books',formData);
 
 
  <script>
-         function Store() {
+    function SaveStore() {
 
-let formData = new FormData();
+    let formData = new FormData();
     formData.append('name',document.getElementById('name').value);
     formData.append('email',document.getElementById('email').value);
     formData.append('subject',document.getElementById('subject').value);
     formData.append('nots',document.getElementById('nots').value);
-store('/cms/store_contacts',formData);
+    store('/cms/admin/store_contacts',formData);
 
 }
  </script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-
-  <script src="{{asset('cms/plugins/toastr/toastr.min.js')}}"></script>
-  <script src="{{asset('cms/js/crud.js')}}"></script>
+ <script src="{{asset('cms/js/crud.js')}}"></script>
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+ <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+ <script src="{{asset('cms/plugins/toastr/toastr.min.js')}}"></script>
+ @endsection
 
 
 

@@ -35,12 +35,15 @@ Route::get('/', function () {
     return view('pages.home');
 });
 
+Route::prefix('cms/admin')->group(function(){
+    Route::post('store_books' , [BookTableController::class , 'storeFront'])->name('store_books');
+    Route::post('store_contacts' , [ContactController::class , 'store'])->name('store_contacts');
+
+});
 Route::prefix('cms/')->middleware('guest:admin')->group(function(){
 
     route::post('{guard}/login' , [UserAuthController::class , 'Login'])->name('view.login');
     route::get('{guard}/login' , [UserAuthController::class , 'showLogin'])->name('view.login');
-    Route::post('store_books' , [BookTableController::class , 'storeFront'])->name('store_books');
-    Route::post('store_contacts' , [ContactController::class , 'store'])->name('store_contacts');
 });
 
 Route::prefix('cms/admin')->middleware('auth:admin')->group(function(){
@@ -81,7 +84,7 @@ Route::prefix('cms/admin/')->middleware('auth:admin')->group(function(){
 
     Route::resource('books', BookTableController::class);
     Route::post('update_books/{id}' , [BookTableController::class , 'update'])->name('update_books');
-    
+
     Route::resource('contacts', ContactController::class);
     Route::post('update_contacts/{id}' , [ContactController::class , 'update'])->name('update_contacts');
 });
