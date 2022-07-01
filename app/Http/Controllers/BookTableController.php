@@ -109,28 +109,28 @@ class BookTableController extends Controller
 
         if(!$validator->fails()){
 
-        $booktables = BookTable::findOrFail($id);
-        $booktables->name = $request->get('name');
-        $booktables->email = $request->get('email');
-        $booktables->mobile = $request->get('mobile');
-        $booktables->date = $request->get('date');
-        $booktables->time = $request->get('time');
+            $booktables = BookTable::findOrFail($id);
+            $booktables->name = $request->get('name');
+            $booktables->email = $request->get('email');
+            $booktables->mobile = $request->get('mobile');
+            $booktables->date = $request->get('date');
+            $booktables->time = $request->get('time');
 
-        $isUpdate = $booktables->save();
-        return ['redirect' =>route('booktables.index')];
+            $isUpdate = $booktables->save();
+            return ['redirect' =>route('booktables.index')];
 
-        if($isUpdate){
-            return response()->json(['icon' => 'success' , 'title' => 'تم تعديل الحجز بنجاح'] , 200);
-         }
-         else {
-            return response()->json(['icon' => 'error' , 'title' => ' فشلت عملية تعديل الحجز'] , 400);
+            if($isUpdate){
+                return response()->json(['icon' => 'success' , 'title' => 'تم تعديل الحجز بنجاح'] , 200);
+            }
+            else {
+                return response()->json(['icon' => 'error' , 'title' => ' فشلت عملية تعديل الحجز'] , 400);
 
-         }
+            }
 
-    }
-    else{
-        return response()->json(['icon' => 'error' , 'title' => $validator->getMessageBag()->first()] , 400);
-    }
+        }
+        else{
+            return response()->json(['icon' => 'error' , 'title' => $validator->getMessageBag()->first()] , 400);
+        }
     }
 
     /**
@@ -141,7 +141,41 @@ class BookTableController extends Controller
      */
     public function destroy($id)
     {
-         $booktables = BookTable::destroy($id);
+        $booktables = BookTable::destroy($id);
         return response()->json(['icon' => 'success' , 'title' => 'تم حذف الحجز بنجاح'] ,  $booktables ? 200 : 400);
     }
+    public function storeFront(Request $request)
+    {
+
+        $validator = Validator($request->all(),[
+            // 'image'=>"image|max:2048|mimes:png,jpg,jpeg,pdf",
+
+        ]);
+
+        if(! $validator->fails()){
+            $booktables = new BookTable();
+            $booktables->name = $request->get('name');
+            $booktables->email = $request->get('email');
+            $booktables->mobile = $request->get('mobile');
+            $booktables->time = $request->get('time');
+            $booktables->number_of_people = $request->get('number_of_people');
+            $booktables->date = $request->get('date');
+            $booktables->nots = $request->get('nots');
+
+        $isSaved = $booktables->save();
+        if($isSaved){
+            return response()->json(['icon' => 'success' , 'title' => 'تم إضافة الحجز بنجاح '] , 200);
+        }
+        else{
+            return response()->json(['icon' => 'error' , 'title' => 'فشلت إضافة الحجز'] , 400);
+        }
+    }
+        else{
+            return response()->json(['icon' => 'error' , 'title' => $validator->getMessageBag()->first()] , 400);
+        }
+
+    }
+
+
+
 }

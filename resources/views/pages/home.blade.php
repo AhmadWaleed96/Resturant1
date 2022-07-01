@@ -1,12 +1,14 @@
 
-@extends('pages/master')
+@extends('pages.master')
 
 @section('title' , ' Home')
 
-@section('styles')
+
+<link rel="stylesheet" href="{{ asset('cms/plugins/toastr/toastr.min.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
 
-@endsection
+
 
 @section('main-title','test')
 
@@ -129,24 +131,28 @@
                     </ul>
                 </div>
             </div>
-    {{-- @php
+    <?php
         use App\Models\Order;
-        use App\Models\item;
-        $orders=Order::with('');
-    @endphp --}}
+        $orders=Order::with('item')->get();
+    ?>
+    @foreach ($orders as $order )
             <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
 
+
+
+
+                <div class="carousel-item @if($loop->remaining) active @endif"></div>
                 <div class="col-lg-6 menu-item filter-starters">
-                    <img src="{{asset('pages/assets/img/menu/lobster-bisque.jpg')}}" class="menu-img" alt="">
+                    <img src="{{asset('storage/images/item/'.$order->item->image)}}" class="menu-img img-circle img-bordered-sm" alt="">
                     <div class="menu-content">
-                        {{-- <a href="#">{{ $orders->item ?$orders->item->name_product:'null' }}</a><span>$5.95</span> --}}
+                        <a href="#">{{ $order->item->name_product }}</a><span>${{ $order->item->price }}</span>
                     </div>
                     <div class="menu-ingredients">
-                        Lorem, deren, trataro, filede, nerada
+                        {{ $order->date_time }}
                     </div>
                 </div>
 
-                <div class="col-lg-6 menu-item filter-specialty">
+                {{-- <div class="col-lg-6 menu-item filter-specialty">
                     <img src="{{asset('pages/assets/img/menu/bread-barrel.jpg')}}" class="menu-img" alt="">
                     <div class="menu-content">
                         <a href="#">Bread Barrel</a><span>$6.95</span>
@@ -224,10 +230,10 @@
                     <div class="menu-ingredients">
                         Plump lobster meat, mayo and crisp lettuce on a toasted bulky roll
                     </div>
-                </div>
+                </div> --}}
 
             </div>
-
+@endforeach
         </div>
     </section>
     <!-- End Menu Section -->
@@ -442,7 +448,8 @@
                 <p>Book a Table</p>
             </div>
 
-            <form>
+            <form method="POST">
+                @csrf
                 <div class="row">
                     <div class="col-lg-4 col-md-6 form-group">
                         <input type="text" name="name" class="form-control" id="name" placeholder="Your Name">
@@ -461,7 +468,7 @@
 
                     </div>
                     <div class="col-lg-4 col-md-6 form-group mt-3">
-                        <input type="text" class="form-control" name="time" id="time" placeholder="Time">
+                        <input type="time" class="form-control" name="time" id="time" placeholder="Time">
 
                     </div>
                     <div class="col-lg-4 col-md-6 form-group mt-3">
@@ -474,7 +481,7 @@
                 </div>
 
                 </div>
-                <div class="text-center"><button type="submit" onclick="performStore()">Book a Table</button></div>
+                <div class="text-center"><button type="button" onclick="performStore()" class="btn btn-warning">Book a Table</button></div>
             </form>
 
         </div>
@@ -816,22 +823,31 @@
 @endsection
 
 
-@section('scripts')
- <script>
-    function performStore(){
-      let formData = new FormData();
-      formData.append('name' , document.getElementById('name').value);
-    formData.append('email' , document.getElementById('email').value);
-    formData.append('mobile' , document.getElementById('mobile').value);
-    formData.append('date' , document.getElementById('date').value);
-    formData.append('time' , document.getElementById('time').value);
-    formData.append('number_of_people' , document.getElementById('number_of_people').value);
-    formData.append('nots' , document.getElementById('nots').value);
 
-      store('/cms/admin/booktables' , formData);
-    }
+ <script>
+       function performStore() {
+
+let formData = new FormData();
+    formData.append('name',document.getElementById('name').value);
+    formData.append('email',document.getElementById('email').value);
+    formData.append('mobile',document.getElementById('mobile').value);
+    formData.append('number_of_people',document.getElementById('number_of_people').value);
+    formData.append('time',document.getElementById('time').value);
+    formData.append('date',document.getElementById('date').value);
+    formData.append('nots',document.getElementById('nots').value);
+
+
+store('/cms/admin/store_books',formData);
+
+}
 
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 
-@endsection
+  <script src="{{asset('cms/plugins/toastr/toastr.min.js')}}"></script>
+  <script src="{{asset('cms/js/crud.js')}}"></script>
+
+
 

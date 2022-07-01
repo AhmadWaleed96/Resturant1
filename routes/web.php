@@ -78,6 +78,7 @@ Route::prefix('cms/admin/')->middleware('auth:admin')->group(function(){
 
     Route::resource('books', BookTableController::class);
     Route::post('update_books/{id}' , [BookTableController::class , 'update'])->name('update_books');
+    Route::post('store_books' , [BookTableController::class , 'storeFront'])->name('store_books');
 });
 
  Route::prefix('pages/admin/')->group(function(){

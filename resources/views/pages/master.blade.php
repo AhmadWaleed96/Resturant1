@@ -50,7 +50,7 @@
                     <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
                 </div>
                 <ul class="top-menu">
-                    <li><a href="login.html"><i class="fas fa-user"></i>Log In</a></li>
+                    <li><a href="{{ route('accountants.index') }}"><i class="fas fa-user"></i>Log In</a></li>
                     <li><a href="register.html"><i class="fas fa-edit"></i>Register Now</a></li>
                 </ul>
             </div>
