@@ -129,16 +129,20 @@
                     </ul>
                 </div>
             </div>
-
+    @php
+        use App\Models\Order;
+        use App\Models\item;
+        $orders=Order::with('');
+    @endphp
             <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
 
                 <div class="col-lg-6 menu-item filter-starters">
                     <img src="{{asset('pages/assets/img/menu/lobster-bisque.jpg')}}" class="menu-img" alt="">
                     <div class="menu-content">
-                        <a href="#">Lobster Bisque</a><span>$5.95</span>
+                        {{-- <a href="#">{{ $orders->item ?$orders->item->name_product:'null' }}</a><span>$5.95</span> --}}
                     </div>
                     <div class="menu-ingredients">
-                        Lorem, deren, trataro, filede, nerada
+                        Lorem, deren, trataro, filede, nerada{{ $orders->id }}
                     </div>
                 </div>
 

@@ -55,7 +55,7 @@
                           <input type="date" class="form-control" name="date" value="{{ $booktables->date }}" id="date" placeholder=" اكتب تاريخ يوم الحجز">
                         </div>
 
-                      <div class="form-group col-md-6">
+                      {{-- <div class="form-group col-md-6">
                         <label for="time">بدأ الحجز</label>
                         <select class="form-select  text-center" value="{{ $booktables->time }}" name="time" style="width: 100%;" id="time" aria-label=".form-select">
                                 <option value="1">1 : 00 AM</option>
@@ -83,7 +83,7 @@
                                 <option value="23">11 : 00 BM</option>
                                 <option value="24">12 : 00 BM</option>
                         </select>
-                      </div>
+                      </div> --}}
                 </div>
 
 

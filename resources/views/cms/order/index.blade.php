@@ -65,6 +65,8 @@
                   <th> رقم الطلب </th>
                   <th>   اليوم والوقت </th>
                   <th> اسم الوجبة </th>
+                  <th> الصورة </th>
+                  <th> السعر </th>
                   <th> الاعدادات </th>
                 </tr>
               </thead>
@@ -73,14 +75,15 @@
                 <tr>
                   <td>{{$order->id}}</td>
                   {{-- <td>{{$order->who}}</td> --}}
-                  {{-- <td>
-                    <img class="img-circle img-bordered-sm" src="{{asset('images/city_who/'.$order->image_who)}}" width="60" height="60" alt="User Image">
-                  </td> --}}
                   <td>{{$order->date_day.' / '.$order->date_time}}</td>
                   <td ><span class="badge bg-green">{{$order->item ? $order->item->name_product :'Null'}}</span></td>
+                  <td>
+                      <img class="img-circle img-bordered-sm" src="{{asset('storage/images/item/'.$order->item->image)}}" width="60" height="60" alt="Image?">
+                    </td>
+                    <td ><span class="badge bg-blue">{{$order->item ? $order->item->price :'Null'}}</span></td>
 
                   <td>
-                    <div class="btn-group">
+                      <div class="btn-group">
                       {{-- @can('Edit-City') --}}
                       <a href="{{route('orders.edit',$order->id)}}" class="btn btn-info" title="Edit">
                         تعديل
@@ -112,7 +115,7 @@
       </div>
     </div>
   </div>
-  
+
 </section>
 
 @endsection
