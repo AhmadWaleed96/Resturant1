@@ -11,4 +11,7 @@ class City extends Model
     public function users(){
         return $this->hasMany(User::class);
     }
+    public function accountant(){
+        return $this->hasMany(Accountant::class);
+    }
 }

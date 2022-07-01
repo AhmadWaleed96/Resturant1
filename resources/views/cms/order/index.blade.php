@@ -64,7 +64,7 @@
                 <tr class="bg-info">
                   <th> رقم الطلب </th>
                   <th>   اليوم والوقت </th>
-                  <th> رقم الوجبة </th>
+                  <th> اسم الوجبة </th>
                   <th> الاعدادات </th>
                 </tr>
               </thead>
@@ -77,7 +77,7 @@
                     <img class="img-circle img-bordered-sm" src="{{asset('images/city_who/'.$order->image_who)}}" width="60" height="60" alt="User Image">
                   </td> --}}
                   <td>{{$order->date_day.' / '.$order->date_time}}</td>
-                  <td ><span class="badge bg-green">{{$order->item_id}}</span></td>
+                  <td ><span class="badge bg-green">{{$order->item ? $order->item->name_product :'Null'}}</span></td>
 
                   <td>
                     <div class="btn-group">
