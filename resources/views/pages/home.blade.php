@@ -129,11 +129,11 @@
                     </ul>
                 </div>
             </div>
-    @php
+    {{-- @php
         use App\Models\Order;
         use App\Models\item;
         $orders=Order::with('');
-    @endphp
+    @endphp --}}
             <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
 
                 <div class="col-lg-6 menu-item filter-starters">
@@ -142,7 +142,7 @@
                         {{-- <a href="#">{{ $orders->item ?$orders->item->name_product:'null' }}</a><span>$5.95</span> --}}
                     </div>
                     <div class="menu-ingredients">
-                        Lorem, deren, trataro, filede, nerada{{ $orders->id }}
+                        Lorem, deren, trataro, filede, nerada
                     </div>
                 </div>
 
